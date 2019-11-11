@@ -1,0 +1,36 @@
+<p>
+  register works!
+</p>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="firstName" name="firstName" [(ngModel)]="user.firstName">
+</mat-form-field>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="lastName" name="lastName" [(ngModel)]="user.lastName">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="phone" name="phone" [(ngModel)]="user.phone">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="email" name="email" [(ngModel)]="user.email">
+  </mat-form-field> 
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="password" name="password" [(ngModel)]="user.password">
+  </mat-form-field>
+</div>
+
+<mat-label>Favorite food</mat-label>
+  <mat-select [(ngModel)]="user.insuranceType" (ngModelChange)="log()">
+    <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
+      {{i.insuranceName}}
+    </mat-option>
+  </mat-select>
+    <button (click)="Save()">save</button> 
+  
+  

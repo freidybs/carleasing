@@ -1,0 +1,14 @@
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" name="enail" [(ngModel)]="user.email">
+  </mat-form-field>
+  <div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="סיסמא" name="password" [(ngModel)]="user.password">
+  </mat-form-field>
+</div>
+   
+<div class="line">
+   <button mat-button (click)="logIn()">login</button>
+</div>
+  <button (click)="register()">כדי להרשם לחץ כאן</button>

@@ -1,0 +1,21 @@
+<agm-map [latitude]='latitude' [longitude]='longitude'  [zoom]="18"  >
+
+<agm-marker  *ngFor="let marker of locationsSupply"   
+   
+ [latitude]="marker.carLocationy"
+    [longitude]="marker.carLocationx" 
+    class="marker"
+   icon="pinSymbol('green')"
+   
+   >
+  </agm-marker> 
+  <agm-marker  *ngFor="let marker of locationsDemands"   
+   
+ [latitude]="marker.Locationy"
+    [longitude]="marker.Locationx" 
+   
+   >
+  </agm-marker> 
+  
+  
+  

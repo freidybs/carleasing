@@ -1,0 +1,55 @@
+<p>
+  supply works!
+</p>
+<button (click)="car()">saveSupply</button>
+<div class="line">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="carNum" name="carNum" [(ngModel)]="supply.carNum">
+      </mat-form-field>
+</div>
+<div class="line">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="fromHour" name="fromHour" [(ngModel)]="supply.fromHour">
+      </mat-form-field>
+</div>
+
+<div class="line">
+    <!-- <mat-form-field class="example-full-width">
+        <input matInput placeholder="fromDate" name="fromDate" [(ngModel)]="supply.fromDate">
+      </mat-form-field> -->
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+</div>
+<div class="line">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="toHour" name="toHour" [(ngModel)]="supply.toHour">
+      </mat-form-field>
+</div>
+<div class="line">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="toDate" name="toDate" [(ngModel)]="supply.toDate">
+      </mat-form-field>
+</div>
+<div class="line">
+      <input type="file" name="image" value="בחר קובץ" [(ngModel)]="supply.file">
+  </div>
+  <mat-label> Address  using the directive >></mat-label>
+        <input matInput
+             matGoogleMapsAutocomplete
+             [country]="il"
+             (onAutocompleteSelected)="onAutocompleteSelected($event)"
+       (onLocationSelected)="onLocationSelected($event)"
+             > 
+<agm-map [latitude]='latitude' [longitude]='longitude'  [zoom]="18" >
+
+  <agm-marker  *ngFor="let marker of supllies"   
+    [latitude]="marker.p_Lat"
+    [longitude]="marker.p_Long"
+   >
+  </agm-marker>
+</agm-map> 
+<button (click)="saveSupply()">saveSupply</button>
+<button (click)="deleteSupply()">deleteSupply</button>

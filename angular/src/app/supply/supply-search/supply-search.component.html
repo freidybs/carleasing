@@ -1,0 +1,41 @@
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="fromHour" name="fromHour" [(ngModel)]="supplySearch.fromHour">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="from date"
+      [(ngModel)]="supplySearch.fromDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="toHour" name="toHour" [(ngModel)]="supplySearch.toHour">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker1" placeholder="to date"
+      [(ngModel)]="supplySearch.toDate">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-label> Address using the directive </mat-label>
+  <input matInput matGoogleMapsAutocomplete [country]="il" (onAutocompleteSelected)="onAutocompleteSelected($event)"
+    (onLocationSelected)="onLocationSelected($event)">
+</div>
+<div class="line">
+  <mat-label>מספר מושבים</mat-label>
+  <input  [(ngModel)]="supplySearch.numSeats" matInput>
+</div>
+<div class="line">
+  <mat-label>חברה</mat-label>
+  <input [(ngModel)]="supplySearch.carCompany" matInput>
+</div>
+<button (click)="searchSupply()">search</button>
+<!-- <button mat-button (click)="saveDemand()">saveDemand</button> -->

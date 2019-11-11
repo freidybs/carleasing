@@ -1,0 +1,17 @@
+<div><button *ngIf="!data" (click)="supplyDetails()">add supply</button></div>
+  <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
+<mat-card class="example-card" *ngFor="let supply of supplyList">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{supply.fromHour}}</mat-card-title>
+    <mat-card-subtitle>{{supply.fromDate}}</mat-card-subtitle>
+  </mat-card-header>
+ 
+  <mat-card-content *ngIf="car">
+   
+    <img mat-card-image  [src]="sanitize(getCar(supply.carNum))" alt="Photo of a Shiba Inu"> 
+
+    {{supply.carNum}}
+  </mat-card-content>
+
+</mat-card>

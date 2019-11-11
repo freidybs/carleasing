@@ -1,0 +1,48 @@
+<p>
+  user-details works!
+</p>
+
+<!-- <div class="line">{{user.userId}}</div>
+<div class="line">{{user.firstName}}</div>
+<div class="line">{{user.lastName}}</div>
+<div class="line">{{user.firstName}}</div>
+<div class="line">{{user.email}}</div>
+<div class="line">{{user.insuranceType}}</div>
+<div class="line">{{user.password}}</div>
+<div class="line">{{user.phone}}</div> -->
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="firstName" name="firstName" [(ngModel)]="user.firstName"><!-- {{user.userId}} -->
+</mat-form-field>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="lastName" name="lastName" [(ngModel)]="user.lastName">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="phone" name="phone" [(ngModel)]="user.phone">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="email" name="email" [(ngModel)]="user.email">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="password" name="password" [(ngModel)]="user.password">
+  </mat-form-field>
+</div>
+<!-- <div class="line">
+    <select [(ngModel)]="user.insuranceType" (ngModelChange)="log()" >
+       (ngModelChange)="selectedinsuranceTypeWasChanged()" -->
+        <!-- <option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">{{i.insuranceName}}</option>
+      </select>
+</div> --> 
+<mat-label>insuranceType</mat-label>
+  <mat-select [(ngModel)]="user.insuranceType" (ngModelChange)="log()">
+    <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
+      {{i.insuranceName}}
+    </mat-option>
+  </mat-select> 
+<button (click)="updateDetails()">updateDetails</button>
