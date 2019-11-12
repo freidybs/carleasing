@@ -76,14 +76,13 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
 
-                SupplyDTO d = Casting.SupplyCasting.CastToDTO(db.Supplies.FirstOrDefault(p => p.supplyId == Supply.supplyId));
-                d.fromDate = Supply.fromDate;
-                d.fromHour = Supply.fromHour;
-                d.carLocationx = Supply.carLocationx;
-                d.carLocationy = Supply.carLocationy;
-                d.toDate = Supply.toDate;
-                d.toHour = Supply.toHour;
-                Casting.SupplyCasting.castToDAL(d);
+                var s = db.Supplies.FirstOrDefault(p => p.supplyId == Supply.supplyId);
+                s.fromDate = Supply.fromDate;
+                s.fromHour = Supply.fromHour;
+                s.carLocationx = Supply.carLocationx;
+                s.carLocationy = Supply.carLocationy;
+                s.toDate = Supply.toDate;
+                s.toHour = Supply.toHour;
                 db.SaveChanges();
 
 
@@ -91,6 +90,19 @@ namespace BL
             }
 
         }
+
+        public static void deleteSupplyByCar(int id)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                var d = db.Cars.FirstOrDefault(p => p.carId == id);
+                Car n = d;
+                List<Supply> s = db.Supplies.Where(p => p.carNum == n.carNum).ToList();
+                db.Supplies.RemoveRange(s);
+                db.SaveChanges();
+            }
+        }
+
         public static CarDTO lookForSuggest(DemandDTO demand)
         {
             using (carLeasingEntities db = new carLeasingEntities())
@@ -107,19 +119,19 @@ namespace BL
             }
         }
     }
+
+   //public static List<SupplyDTO> showSupplies(int userId)
+   //{
+
+   //    using (carLeasingEntities db = new carLeasingEntities())
+   //    {
+
+   //      return Casting.SupplyCasting.castListToDTO(db.Supplies.Where(p => p.supplyUser == userId).ToList());
+
+
+   //    }
+
+   //}
 }
-    //public static List<SupplyDTO> showSupplies(int userId)
-    //{
-
-    //    using (carLeasingEntities db = new carLeasingEntities())
-    //    {
-
-    //      return Casting.SupplyCasting.castListToDTO(db.Supplies.Where(p => p. == userId).ToList());
-
-
-    //    }
-
-    //}
-
 
 

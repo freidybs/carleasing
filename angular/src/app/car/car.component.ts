@@ -45,10 +45,7 @@ export class CarComponent implements OnInit {
     );
   }
   
-  // addImage(event) {
-  //   this.files=event.target.files;
-
-  //  }
+  
   addImage(event) {
 
     this. fileList = event.target.files;

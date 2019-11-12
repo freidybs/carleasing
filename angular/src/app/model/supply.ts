@@ -5,7 +5,7 @@ export class Suplly {
     supplyId:number;
         carNum:string;
         fromHour:Date;
-        fromdate:Date;
+        fromDate:Date;
         toDate:Date;
         toHour:Date;
         carLocationx:number;

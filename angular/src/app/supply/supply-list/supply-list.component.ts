@@ -13,15 +13,15 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class SupplyListComponent implements OnInit {
   @Input() data;
- supplyList: Array<Suplly>;
+public supplyList: Array<Suplly>;
   demand = new Demand();
   supply: Suplly = new Suplly();
   car:Car[];
+ public dataSource: any;
+  columnsToDisplay = [ 'delete','edit','toHour','fromHour', 'toDate',' fromDate' ,'carNum'];
+
   constructor(private supplyService: SupplyService, private router: Router, private aRouter: ActivatedRoute,private sanitizer:DomSanitizer) { }
 
-  // ngOnChanges(){
-  //   this.supplyList=this.data;
-  // }
   ngOnInit() {
     // this.aRouter.params.subscribe(
     //   (p: Demand) => {
@@ -34,6 +34,14 @@ export class SupplyListComponent implements OnInit {
     //     console.log(this.supplyList);
     //   }
     // )
+    this.supplyService.userSupplies().subscribe(
+      (res: Array<Suplly>) => {
+        this.supplyList = res;
+        this.dataSource = this.supplyList;
+        console.log(this.supplyList);
+       /*  this.changeDetectorRefs.detectChanges(); */
+      }
+    )
 if(!this.data)
    { this.supplyService.GetAllSupply().subscribe(
       (res: Array<Suplly>) => {
@@ -68,7 +76,25 @@ if(!this.data)
   sanitize(url:string){
     return this.sanitizer.bypassSecurityTrustUrl(url);
 }
-
+delete(id:number)
+{
+  this.supplyService.delete(id).subscribe(
+    (res)=>
+    {
+      this.dataSource=this.dataSource.filter(item=>item.carId!=id);
+      alert("ok");
+    },
+    (err)=>
+    {
+      alert("err");
+    }
+  );
+}
+edit(supply:Suplly)
+{
+ return this.router.navigate(['supply-details']);
+ 
+}
 
 
 

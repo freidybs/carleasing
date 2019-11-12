@@ -30,7 +30,7 @@ selectedMarker;
 locations:Array<Suplly>;
 supply: Suplly = new Suplly();
 supplyList: Array<Suplly>;
-  constructor(private demandServic: DemandService, private route: Router,private supplyService:SupplyService) { }
+  constructor(private demandServic: DemandService, private router: Router,private supplyService:SupplyService) { }
   ngOnInit() {
     this.zoom = 10;
     this.latitude = 52.520008;
@@ -98,7 +98,7 @@ selectMarker(event) {
 }
 GetFilterList()
 {
-  this.route.navigate(['supply-list/',this.demand]);
+  this.router.navigate(['supply-list/',this.demand]);
 }
 searchSupply(details) {
   this.supplyService.GetFilterList(details).subscribe(

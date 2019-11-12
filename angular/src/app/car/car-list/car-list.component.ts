@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Car } from 'src/app/model/car';
 import { CarService } from '../car.service';
@@ -23,7 +23,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class CarListComponent implements OnInit {
  public carList: Array<Car>;
-
+ 
  public dataSource: any;
   columnsToDisplay = [ 'delete','edit','numSeats', 'model','carCompany' ,'carNum','picture'];
 
@@ -47,11 +47,12 @@ export class CarListComponent implements OnInit {
   sanitize(url:string){
     return this.sanitizer.bypassSecurityTrustUrl(url);
 }
-delete(carId:number)
+delete(id:number)
 {
-  this.carService.delete(carId).subscribe(
+  this.carService.delete(id).subscribe(
     (res)=>
     {
+      this.dataSource=this.dataSource.filter(item=>item.carId!=id);
       alert("ok");
     },
     (err)=>
@@ -59,5 +60,10 @@ delete(carId:number)
       alert("err");
     }
   );
+}
+edit(car:Car)
+{
+ return this.router.navigate(['car-details']);
+ 
 }
 }

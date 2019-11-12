@@ -35,13 +35,13 @@ namespace BL
             }
         }
 
-        public static List<CarDTO> allCars()
-        {
-            using (carLeasingEntities db = new carLeasingEntities())
-            {
-                return Casting.CarCasting.castListToDTO(db.Cars.ToList());
-                }
-        }
+        //public static List<CarDTO> allCars()
+        //{
+        //    using (carLeasingEntities db = new carLeasingEntities())
+        //    {
+        //        return Casting.CarCasting.castListToDTO(db.Cars.ToList());
+        //        }
+        //}
 
        
 
@@ -52,7 +52,24 @@ namespace BL
                 return Casting.CarCasting.castListToDTO(db.Cars.Where(p => p.owner == id).ToList());
             }
         }
-       
 
+        public static void edit(CarDTO car)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                var c = db.Cars.FirstOrDefault(cr => cr.carId == car.carId);
+                c.carNum = car.carNum;
+                c.description = car.description;
+                c.carCompany = car.carCompany;
+                c.expiryDate = car.expiryDate;
+                c.file = car.file;
+                c.insuranceType = car.insuranceType;
+                c.model = car.model;
+                c.numSeats = car.numSeats;
+                c.trunc = car.trunc;
+                c.picture = car.picture;
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -57,14 +57,13 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
                
-                 DemandDTO d = Casting.DemandCasting.castToDTO(db.Demands.FirstOrDefault(p => p.demanedId == demand.demanedId));
+                 var d = db.Demands.FirstOrDefault(p => p.demanedId == demand.demanedId);
                 d.fromDate = demand.fromDate;
                 d.fromHour = demand.fromHour;
                 d.Locationx = demand.Locationx;
                 d.Locationy = demand.Locationy;
                 d.toDate = demand.toDate;
                 d.toHour = demand.toHour;
-                Casting.DemandCasting.castToDAL(d);
                 db.SaveChanges();
 
                 

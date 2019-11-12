@@ -45,25 +45,25 @@ namespace WebAp.Controllers
                 case "updateSupply":
                     SupplyFunction.updateSupply(Supply); 
                         break;
-                //case "deleteSupply":
-                //    SupplyFunction.deleteSupply(Supply);
-                //    break;
+                
                 default:
                     break;
             }
            
         }
-       //איך להבעביר בסוג אחר ולא אוביקט???
-        //public void deleteSupply(int Supply)
-        //{
-        //    SupplyFunction.deleteSupply(Supply);
+      [HttpDelete]
+       public void deleteSupply(int supplyid)
+       {
+           SupplyFunction.deleteSupply(supplyid);
+       }
+        //[HttpGet]
+        //[Route("userSupplies")]
+        //public List<SupplyDTO> showSupply()
+        // {
+        //      var id = Helper.getCurrentUserId(Request.GetRequestContext());
+        //    return SupplyFunction.showSupplies(id);
         //}
-        ////[HttpPost]
-        ////public List<SupplyDTO> showSupply(int id)
-        ////{
-        ////    return SupplyFunction.showSupplies(id);
-        ////}
-       
-        
+
+
     }
 }

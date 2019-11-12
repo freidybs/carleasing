@@ -27,14 +27,14 @@ namespace WebAp.Controllers
             return carFunction.carList(id);
 
         }
-        [HttpGet]
-        [Route("getAllList")]
-        public List<CarDTO> getAllcars()
-        {
+        //[HttpGet]
+        //[Route("getAllList")]
+        //public List<CarDTO> getAllcars()
+        //{
 
-            return carFunction.allCars();
+        //    return carFunction.allCars();
 
-        }
+        //}
 
         [Route("UploadPhotos")]
         [HttpPost]
@@ -80,13 +80,18 @@ namespace WebAp.Controllers
 
 
         }
-        [Route("delete")]
-        [HttpPost]
-        public void delete(int carId)
+        [HttpDelete]
+        public void delete(int id)
         {
-            carFunction.deleteCar(carId);
+            SupplyFunction.deleteSupplyByCar(id);
+            carFunction.deleteCar(id);
         }
-
+        [Route("edit")]
+        [HttpPost]
+        public void edit(CarDTO car)
+        {
+            carFunction.edit(car);
+        }
     }
 }
 

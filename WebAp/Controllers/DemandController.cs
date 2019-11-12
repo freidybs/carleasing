@@ -28,7 +28,15 @@ namespace WebAp.Controllers
         {
             return DemandsFunction.getAllDemands();
         }
-
+        [HttpGet]
+        [Route("userDemands")]
+        public List<DemandDTO> userDemands()
+        {
+            var id = Helper.getCurrentUserId(Request.GetRequestContext());
+            return DemandsFunction.showDemands(id);
+               
+            
+        }
         public void newDemand(string subItem, DemandDTO Demand)
         {
             switch (subItem)
@@ -46,18 +54,15 @@ namespace WebAp.Controllers
 
 
         }
+        [HttpDelete]
+        public void delete(int id)
+        {
+            
+            DemandsFunction.deleteDemand(id);
+        }
         
-        //איך להעיבר עם סוג אוביקט אחר ולא עם demand
-        //public void deleteDemand(int demand)
-        //{
-        //    DemandsFunction.deleteDemand(demand);
-        //}
 
-        //public List<DemandDTO> showDemands(int id)
-        //{
-        //    return DemandsFunction.showDemands(id);
-        //}
-
+       
 
 
     }
