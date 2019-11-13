@@ -3,8 +3,8 @@
     <mat-card class="example-card" *ngFor="let demand of demandList">
         <mat-card-header  >
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{demand.fromDate}}</mat-card-title>
-          <mat-card-subtitle>{{demand.fromDate}}</mat-card-subtitle>
+          <mat-card-title>{{demand.fromDate| date:"dd/MM/yyyy"}}</mat-card-title>
+          <mat-card-subtitle>{{demand.fromDate| date:"dd/MM/yyyy"}}</mat-card-subtitle>
         </mat-card-header>
         <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
         <mat-card-content>
@@ -44,13 +44,13 @@
         <!-- Name Column -->
         <ng-container matColumnDef="toDate">
           <th mat-header-cell *matHeaderCellDef> עד תאריך </th>
-          <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.toDate| date:"dd/MM/yyyy"}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="fromDate">
           <th mat-header-cell *matHeaderCellDef>  מתאריך </th>
-          <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.fromDate| date:"dd/MM/yyyy"}} </td>
         </ng-container>
 
         
