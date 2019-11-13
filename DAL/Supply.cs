@@ -28,8 +28,10 @@ namespace DAL
         public Nullable<System.TimeSpan> toHour { get; set; }
         public Nullable<double> carLocationx { get; set; }
         public Nullable<double> carLocationy { get; set; }
+        public Nullable<int> supplyU { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual User User { get; set; }
     }
 }

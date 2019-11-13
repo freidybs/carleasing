@@ -18,6 +18,8 @@ namespace DAL
         public User()
         {
             this.Cars = new HashSet<Car>();
+            this.Demands = new HashSet<Demand>();
+            this.Supplies = new HashSet<Supply>();
         }
     
         public int userId { get; set; }
@@ -31,5 +33,9 @@ namespace DAL
         public virtual Insurance Insurance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Car> Cars { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demands { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supply> Supplies { get; set; }
     }
 }

@@ -17,10 +17,10 @@ namespace DTO
         public Nullable<double> carLocationx { get; set; }
         public Nullable<double> carLocationy { get; set; }
         public Nullable<bool> insuranceDemand { get; set; }
+        public Nullable<int> supplyU { get; set; }
 
-       
-       
-       
+
+
 
 
     }

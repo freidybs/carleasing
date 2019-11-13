@@ -54,15 +54,15 @@ namespace WebAp.Controllers
       [HttpDelete]
        public void deleteSupply(int supplyid)
        {
-           SupplyFunction.deleteSupply(supplyid);
+          SupplyFunction.deleteSupply(supplyid);
        }
-        //[HttpGet]
-        //[Route("userSupplies")]
-        //public List<SupplyDTO> showSupply()
-        // {
-        //      var id = Helper.getCurrentUserId(Request.GetRequestContext());
-        //    return SupplyFunction.showSupplies(id);
-        //}
+       [HttpGet]
+       [Route("userSupplies")]
+        public List<SupplyDTO> showSupply()
+        {
+             var id = Helper.getCurrentUserId(Request.GetRequestContext());
+           return SupplyFunction.showSupplies(id);
+        }
 
 
     }

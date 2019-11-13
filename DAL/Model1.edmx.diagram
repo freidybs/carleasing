@@ -17,6 +17,8 @@
         <EntityTypeShape EntityType="carLeasingModel.Car" Width="1.5" PointX="5.25" PointY="5.5" />
         <AssociationConnector Association="carLeasingModel.fk_1" />
         <AssociationConnector Association="carLeasingModel.FK_Car_Insurance" />
+        <AssociationConnector Association="carLeasingModel.FK_Demand_Users" />
+        <AssociationConnector Association="carLeasingModel.FK_Supply_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
