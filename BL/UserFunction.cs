@@ -12,28 +12,26 @@ namespace BL
     public class UserFunction
     {
        
-        public static bool  login(UserDTO userD)
+        public static UserDTO  login(UserDTO userD)
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var user = db.Users.FirstOrDefault(p => p.email == userD.email && p.password == userD.password);
-                if (user != null)
-                    return true;
-                return false;
+                var user = db.User.FirstOrDefault(p => p.email == userD.email && p.password == userD.password);
+                return Casting.UserCasting.castToDto(user);
             }
 
         }
-        public static bool register(UserDTO user)
+        public static UserDTO register(UserDTO user)
         {
             using (carLeasingEntities db = new carLeasingEntities())
             { 
-                var u = db.Users.FirstOrDefault(p => p.password== user.password);
+                var u = db.User.FirstOrDefault(p => p.password== user.password);
                 if (u != null)
-                    return false;
+                    return null;
                 User newUser = Casting.UserCasting.castToDal(user);
-                db.Users.Add(newUser);
+               var uu= db.User.Add(newUser);
                 db.SaveChanges();
-                return true;
+                return Casting.UserCasting.castToDto(uu);
             }
             
         }
@@ -42,7 +40,7 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var user=db.Users.Where(i => i.userId == userU.userId).FirstOrDefault();
+                var user=db.User.Where(i => i.userId == userU.userId).FirstOrDefault();
                 user.firstName = userU.firstName;
                 user.lastName = userU.lastName;
                 user.email = userU.email;
@@ -57,7 +55,7 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var user= db.Users.FirstOrDefault(p => p.userId == userId);
+                var user= db.User.FirstOrDefault(p => p.userId == userId);
                 return Casting.UserCasting.castToDto(user);
             }
 

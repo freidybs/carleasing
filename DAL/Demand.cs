@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Demand()
         {
-            this.Transactions = new HashSet<Transaction>();
+            this.Transaction = new HashSet<Transaction>();
         }
     
         public int demanedId { get; set; }
@@ -32,6 +32,7 @@ namespace DAL
         public string carCompany { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transaction { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -20,17 +20,17 @@ namespace BL
             using (carLeasingEntities db=new carLeasingEntities())
             {
                 Car newCar = Casting.CarCasting.castToDAL(car);
-                db.Cars.Add(newCar);
+                db.Car.Add(newCar);
                 db.SaveChanges();
-                return db.Cars.FirstOrDefault(p => p.carNum == car.carNum).carId;
+                return db.Car.FirstOrDefault(p => p.carNum == car.carNum).carId;
             }
         }
         public static void deleteCar(int carId)
         {
             using(carLeasingEntities db=new carLeasingEntities())
             {
-                Car c = db.Cars.FirstOrDefault(y => y.carId == carId);
-                db.Cars.Remove(c);
+                Car c = db.Car.FirstOrDefault(y => y.carId == carId);
+                db.Car.Remove(c);
                 db.SaveChanges();
             }
         }
@@ -49,7 +49,7 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                return Casting.CarCasting.castListToDTO(db.Cars.Where(p => p.owner == id).ToList());
+                return Casting.CarCasting.castListToDTO(db.Car.Where(p => p.owner == id).ToList());
             }
         }
 
@@ -57,7 +57,7 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var c = db.Cars.FirstOrDefault(cr => cr.carId == car.carId);
+                var c = db.Car.FirstOrDefault(cr => cr.carId == car.carId);
                 c.carNum = car.carNum;
                 c.description = car.description;
                 c.carCompany = car.carCompany;

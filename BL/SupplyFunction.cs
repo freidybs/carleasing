@@ -17,7 +17,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 Supply d = Casting.SupplyCasting.castToDAL(Supply);
-                db.Supplies.Add(d);
+                db.Supply.Add(d);
                 db.SaveChanges();
 
 
@@ -28,7 +28,7 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                return Casting.SupplyCasting.castListToDTO(db.Supplies.ToList());
+                return Casting.SupplyCasting.castListToDTO(db.Supply.ToList());
             }
 
         }
@@ -39,12 +39,12 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             { List<SupplyDTO> filterList = new List<SupplyDTO>();
                 //לולאה על כל החניונים חישוב לפי נקודות שלהם
-                foreach (var supply in db.Supplies)
+                foreach (var supply in db.Supply)
                 {
                     var locA = new GeoCoordinate((double)demand.Locationx, (double)demand.Locationy );
                     var locB = new GeoCoordinate((double)supply.carLocationx, (double)supply.carLocationy);
                    double distance1 = locA.GetDistanceTo(locB);
-                   var d = db.Supplies.FirstOrDefault(p => p.fromDate <= demand.fromDate && p.fromHour <= demand.fromHour && p.toDate >= demand.toDate
+                   var d = db.Supply.FirstOrDefault(p => p.fromDate <= demand.fromDate && p.fromHour <= demand.fromHour && p.toDate >= demand.toDate
                   && p.toHour >= demand.toHour);
                     if (/*d!=null&&*/ distance1 < 2000)
                     {
@@ -65,8 +65,8 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                Supply d = db.Supplies.FirstOrDefault(p => p.supplyId == SupplyId);
-                db.Supplies.Remove(d);
+                Supply d = db.Supply.FirstOrDefault(p => p.supplyId == SupplyId);
+                db.Supply.Remove(d);
                 db.SaveChanges();
             }
         }
@@ -76,7 +76,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
 
-                var s = db.Supplies.FirstOrDefault(p => p.supplyId == Supply.supplyId);
+                var s = db.Supply.FirstOrDefault(p => p.supplyId == Supply.supplyId);
                 s.fromDate = Supply.fromDate;
                 s.fromHour = Supply.fromHour;
                 s.carLocationx = Supply.carLocationx;
@@ -95,10 +95,10 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var d = db.Cars.FirstOrDefault(p => p.carId == id);
+                var d = db.Car.FirstOrDefault(p => p.carId == id);
                 Car n = d;
-                List<Supply> s = db.Supplies.Where(p => p.carNum == n.carNum).ToList();
-                db.Supplies.RemoveRange(s);
+                List<Supply> s = db.Supply.Where(p => p.carNum == n.carNum).ToList();
+                db.Supply.RemoveRange(s);
                 db.SaveChanges();
             }
         }
@@ -107,11 +107,11 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var d = db.Supplies.FirstOrDefault(p => p.fromDate <= demand.fromDate && p.fromHour <= demand.fromHour && p.toDate >= demand.toDate
+                var d = db.Supply.FirstOrDefault(p => p.fromDate <= demand.fromDate && p.fromHour <= demand.fromHour && p.toDate >= demand.toDate
                   && p.toHour >= demand.toHour);
                 if (d != null)
                 {
-                    var currentCar = db.Cars.FirstOrDefault(c => c.carNum == d.carNum);
+                    var currentCar = db.Car.FirstOrDefault(c => c.carNum == d.carNum);
                     CarDTO carDTO = Casting.CarCasting.castToDTO(currentCar);
                     return carDTO;
                 }

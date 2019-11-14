@@ -24,8 +24,9 @@ this.registerService.getInsurance().subscribe((res)=>{
 Save(){
 this.registerService.save(this.user).subscribe(
   (res)=>{
-alert("פרטיך נשמרו בהצלחה");
-this.saveImg(1);
+    if(res!=null)
+    alert("פרטיך נשמרו בהצלחה");
+    this.saveImg(res['userId']);
   },
   (err)=>{
     alert("err");
@@ -52,7 +53,10 @@ saveImg(id:number){
       this.newFile = this.fileList[i];
       image1.append(i.toString(), this.newFile, this.newFile.name);
     }
-    this.registerService.uploadPhotos(image1, id).subscribe(() => { })
+    this.registerService.uploadPhotos(image1, id).subscribe((res) => {
+      localStorage.setItem('userImage',res.toString());
+      debugger
+     })
   }
 }
 }

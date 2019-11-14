@@ -36,8 +36,8 @@ namespace BL.Casting
                     endDate = transactionDTO.endDate,
                     endHour = transactionDTO.endHour,
                     supplyId = transactionDTO.supplyId,
-                    Demand = db.Demands.FirstOrDefault(p => p.demanedId == transactionDTO.demandId),
-                    Supply = db.Supplies.FirstOrDefault(p => p.supplyId == transactionDTO.supplyId)
+                    Demand = db.Demand.FirstOrDefault(p => p.demanedId == transactionDTO.demandId),
+                    Supply = db.Supply.FirstOrDefault(p => p.supplyId == transactionDTO.supplyId)
                 };
             }
         }

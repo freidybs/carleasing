@@ -23,7 +23,7 @@ namespace WebAp
 
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                var user = db.Users.FirstOrDefault(p => p.email == context.UserName && p.password == context.Password);
+                var user = db.User.FirstOrDefault(p => p.email == context.UserName && p.password == context.Password);
                 if (user != null)
                 {
                     identity.AddClaim(new Claim("Id", user.userId.ToString()));

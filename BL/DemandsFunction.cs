@@ -14,7 +14,7 @@ namespace BL
         {using (carLeasingEntities db = new carLeasingEntities())
             {
                 Demand d = Casting.DemandCasting.castToDAL(demand);
-                db.Demands.Add(d);
+                db.Demand.Add(d);
                 db.SaveChanges();
             }
         }
@@ -22,8 +22,8 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                Demand d = db.Demands.FirstOrDefault(p => p.demanedId == demandId);
-                db.Demands.Remove(d);
+                Demand d = db.Demand.FirstOrDefault(p => p.demanedId == demandId);
+                db.Demand.Remove(d);
                 db.SaveChanges();
             }
         }
@@ -34,7 +34,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
 
-                return Casting.DemandCasting.castListToDTO(db.Demands.ToList());
+                return Casting.DemandCasting.castListToDTO(db.Demand.ToList());
 
 
             }
@@ -46,7 +46,7 @@ namespace BL
                 using (carLeasingEntities db = new carLeasingEntities())
             {
 
-                return  Casting.DemandCasting.castListToDTO(db.Demands.Where(p => p.interestedId == userId).ToList());
+                return  Casting.DemandCasting.castListToDTO(db.Demand.Where(p => p.interestedId == userId).ToList());
                    
                  
             }
@@ -57,7 +57,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
                
-                 var d = db.Demands.FirstOrDefault(p => p.demanedId == demand.demanedId);
+                 var d = db.Demand.FirstOrDefault(p => p.demanedId == demand.demanedId);
                 d.fromDate = demand.fromDate;
                 d.fromHour = demand.fromHour;
                 d.Locationx = demand.Locationx;

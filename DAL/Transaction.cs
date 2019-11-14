@@ -22,7 +22,7 @@ namespace DAL
         public Nullable<System.DateTime> endDate { get; set; }
         public Nullable<System.TimeSpan> endHour { get; set; }
     
-        public virtual Supply Supply { get; set; }
         public virtual Demand Demand { get; set; }
+        public virtual Supply Supply { get; set; }
     }
 }

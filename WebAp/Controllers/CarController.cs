@@ -59,7 +59,7 @@ namespace WebAp.Controllers
                 pathToSql += id + "/" + postedFile.FileName;
                 using (carLeasingEntities db = new carLeasingEntities())
                 {
-                    var car = db.Cars.FirstOrDefault(p => p.carId.ToString() == id);
+                    var car = db.Car.FirstOrDefault(p => p.carId.ToString() == id);
 
                     car.picture = pathToSql;
                     db.SaveChanges();

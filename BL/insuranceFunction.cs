@@ -12,7 +12,7 @@ namespace BL
     {
         public static List<insuranceTypeDTO> insuranceList()
         {using (carLeasingEntities db = new carLeasingEntities())
-                return Casting.insuranceCasting.castListToDTO(db.Insurances.ToList());
+                return Casting.insuranceCasting.castListToDTO(db.Insurance.ToList());
 
 
 

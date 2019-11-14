@@ -20,11 +20,14 @@ user:User=new User();
   logIn(){
 this.loginService.login(this.user).subscribe(
   (res)=>{
-    if (res['status'] === 200) { 
+    
+    if (res!=null) { 
       localStorage.setItem("userMail",(this.user.email).toString());
+      localStorage.setItem('userImage',res['picture'].toString());
+
       this.globalService.setToken(res['body'].access_token);
     }
-if(res==false)
+else
 {
  alert("you have to register ");
 }

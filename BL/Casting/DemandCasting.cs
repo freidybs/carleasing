@@ -42,7 +42,7 @@ namespace BL.Casting
                     Locationy = demandDTO.Locationy,
                     toDate = demandDTO.toDate,
                     toHour = demandDTO.toHour,
-                    Transactions = db.Transactions.Where(p => p.demandId == demandDTO.demanedId).ToList(),
+                    Transaction = db.Transaction.Where(p => p.demandId == demandDTO.demanedId).ToList(),
                     //User = db.Users.FirstOrDefault(p => p.userId == demandDTO.interestedId)
 
 

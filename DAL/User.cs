@@ -17,7 +17,8 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Cars = new HashSet<Car>();
+            this.Car = new HashSet<Car>();
+            this.Demand = new HashSet<Demand>();
         }
     
         public int userId { get; set; }
@@ -27,9 +28,12 @@ namespace DAL
         public string email { get; set; }
         public string password { get; set; }
         public int insuranceType { get; set; }
+        public string picture { get; set; }
     
-        public virtual Insurance Insurance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<Car> Car { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demand { get; set; }
+        public virtual Insurance Insurance { get; set; }
     }
 }

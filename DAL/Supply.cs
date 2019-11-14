@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supply()
         {
-            this.Transactions = new HashSet<Transaction>();
+            this.Transaction = new HashSet<Transaction>();
         }
     
         public int supplyId { get; set; }
@@ -30,6 +30,6 @@ namespace DAL
         public Nullable<double> carLocationy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }
