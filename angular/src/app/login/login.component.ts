@@ -20,9 +20,9 @@ user:User=new User();
   logIn(){
 this.loginService.login(this.user).subscribe(
   (res)=>{
-    if (res.status === 200) { 
+    if (res['status'] === 200) { 
       localStorage.setItem("userMail",(this.user.email).toString());
-      this.globalService.setToken(res.body.access_token);
+      this.globalService.setToken(res['body'].access_token);
     }
 if(res==false)
 {
