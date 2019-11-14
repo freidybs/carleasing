@@ -15,7 +15,7 @@ baseRoute:string="http://localhost:58516/api/";
   
    
   saveSupply(supply:Suplly){
-     return  this.http.post(this.baseRoute+"Supply?subItem=newSupply",supply);
+     return  this.http.post(this.baseRoute+"Supply?subItem=newSupply",supply,this.globalService.httpOptions);
    }
  
   GetAllSupply()
@@ -27,12 +27,12 @@ baseRoute:string="http://localhost:58516/api/";
   }
   GetFilterList(demand:Demand)
   {
-    return this.http.post(this.baseRoute+"Supply/get-filter-list",demand);
+    return this.http.post(this.baseRoute+"Supply/get-filter-list",demand,this.globalService.httpOptions);
   }
   userSupplies() {
     return this.http.get(this.baseRoute+"Supply/userSupplies",this.globalService.httpOptions);
   }
-  delete(id: number) {
+  delete(id:number) {
     return this.http.delete(this.baseRoute+"Supply/"+id);
   }
   update(supply:Suplly)

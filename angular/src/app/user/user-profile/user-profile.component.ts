@@ -24,10 +24,10 @@ myProfile()
 }
 mydemands()
 {
-return this.router.navigate(['demand-list']);
+return this.router.navigate(['demand-ulist']);
 }
 mySupplies()
 {
-  return this.router.navigate(['supply-list']);
+  return this.router.navigate(['supply-ulist']);
 }
 }

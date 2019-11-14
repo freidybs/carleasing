@@ -32,6 +32,9 @@ import { MapsComponent } from './maps/maps.component';
 import { SupplySearchComponent } from './supply/supply-search/supply-search.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
+import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
+
 @NgModule({
   declarations: [
   AppComponent,
@@ -52,6 +55,9 @@ import {MatMenuModule} from '@angular/material/menu';
     SupplyListComponent,
     MapsComponent,
     SupplySearchComponent,
+    DemandUListComponent,
+    SupplyUListComponent,
+    
   
   ],
   imports: [

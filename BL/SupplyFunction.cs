@@ -14,6 +14,7 @@ namespace BL
 
         public static void newSupply(SupplyDTO Supply)
         {
+            
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 Supply d = Casting.SupplyCasting.castToDAL(Supply);
@@ -38,7 +39,7 @@ namespace BL
 
             using (carLeasingEntities db = new carLeasingEntities())
             { List<SupplyDTO> filterList = new List<SupplyDTO>();
-                //לולאה על כל החניונים חישוב לפי נקודות שלהם
+                //לולאה על כל ההצעות חישוב לפי נקודות שלהם
                 foreach (var supply in db.Supplies)
                 {
                     var locA = new GeoCoordinate((double)demand.Locationx, (double)demand.Locationy);
@@ -46,7 +47,7 @@ namespace BL
                     double distance1 = locA.GetDistanceTo(locB);
                     var d = db.Supplies.FirstOrDefault(p => p.fromDate <= demand.fromDate && p.fromHour <= demand.fromHour && p.toDate >= demand.toDate
                    && p.toHour >= demand.toHour);
-                    if (/*d!=null&&*/ distance1 < 2000)
+                    if ( distance1 < 2000)// ממרחק מסוים
                     {
                         var s = Casting.SupplyCasting.CastToDTO(supply);
                         filterList.Add(s);

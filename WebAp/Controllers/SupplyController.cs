@@ -30,6 +30,7 @@ namespace WebAp.Controllers
         [Route("get-filter-list")]
         public List<SupplyDTO> getFilterList(DemandDTO demand)
         {
+            demand.interestedId = Helper.getCurrentUserId(Request.GetRequestContext());
             DemandsFunction.newDemand(demand);
             return SupplyFunction.getFilterList(demand);
         }
@@ -40,6 +41,7 @@ namespace WebAp.Controllers
             switch (subItem)
             {
                 case "newSupply":
+                    Supply.supplyU = Helper.getCurrentUserId(Request.GetRequestContext());
                     SupplyFunction.newSupply(Supply);
                     break;
                 case "updateSupply":

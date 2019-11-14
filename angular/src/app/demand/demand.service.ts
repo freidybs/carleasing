@@ -18,8 +18,8 @@ baseRoute:string="http://localhost:58516/api/"
   saveDemand(demand:Demand){
     return  this.http.post(this.baseRoute+"Demand?subItem=newDemand",demand);
   }
- deleteDemand(id:number){
-   return  this.http.delete(this.baseRoute+"Demand/"+id);
+ deleteDemand(demandId:number){
+   return  this.http.delete(this.baseRoute+"Demand/"+demandId);
    
  }
  lookForSuggest(demand:Demand)

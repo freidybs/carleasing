@@ -8,12 +8,3 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  table {
-    width: 100%;
-}
-  #picture{
-    width:40px;
-  }
-td{
-  width: 14.285%;
-}

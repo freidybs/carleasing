@@ -16,9 +16,7 @@ demand:Demand=new Demand();
 supplyList:Array<Suplly>;
  
  
- public dataSource: any;
-  columnsToDisplay = [ 'delete','edit','toHour', 'fromHour','toDate' ,'fromDate'];
-
+ 
 
   constructor(private demandService:DemandService, private router:Router) { }
 
@@ -28,32 +26,11 @@ supplyList:Array<Suplly>;
     this.demandList=res;
   }
  );
- this.demandService.userDemands().subscribe(
-  (res: Array<Demand>) => {
-    this.demandList = res;
-    this.dataSource = this.demandList;
-    
-   /*  this.changeDetectorRefs.detectChanges(); */
-  });
-  }
+}
 
   demandDetails()
     {
       return this.router.navigate(['demand-details']);
-    }
-    delete(id:number)
-    {
-      this.demandService.deleteDemand(id).subscribe(
-        (res)=>
-        {
-          this.dataSource=this.dataSource.filter(item=>item.demandId!=id);
-          alert("ok");
-        },
-        (err)=>
-        {
-          alert("err");
-        }
-      );
     }
     
 }

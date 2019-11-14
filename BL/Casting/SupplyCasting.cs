@@ -42,7 +42,7 @@ namespace BL.Casting
                     fromDate = supplyDTO.fromDate,
                     fromHour = supplyDTO.fromHour,
                     toDate = supplyDTO.toDate,
-                   
+                   supplyU=supplyDTO.supplyU,
                     toHour = supplyDTO.toHour,
                     Transactions = db.Transactions.Where(p => p.supplyId == supplyDTO.supplyId).ToList(),
                     
