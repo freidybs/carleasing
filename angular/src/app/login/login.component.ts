@@ -16,30 +16,30 @@ user:User=new User();
   ngOnInit() {
 
   }
-
   logIn(){
-this.loginService.login(this.user).subscribe(
-  (res)=>{
-    
-    if (res!=null) { 
-      localStorage.setItem("userMail",(this.user.email).toString());
-      localStorage.setItem('userImage',res['picture'].toString());
-
-      this.globalService.setToken(res['body'].access_token);
+    this.loginService.login(this.user).subscribe(
+      (res)=>{
+        if (res.status === 200) { 
+          localStorage.setItem("userMail",(this.user.email).toString());
+          this.globalService.setToken(res.body.access_token);
+          this.loginService.getCurrentUser().subscribe((res1:any)=>{
+            localStorage.setItem('userImage',res1.picture?res1.picture.toString():"");
+          });
+        }
+    if(res==false)
+    {
+     alert("you have to register ");
     }
-else
-{
- alert("you have to register ");
-}
+    
+      },
+      (err)=>{
+        alert("err");
+      }
+    );
+      }
+      register(){
+    this.router.navigate(['register']);
+      }
 
-  },
-  (err)=>{
-    alert("err");
-  }
-);
-  }
-  register(){
-this.router.navigate(['register']);
-  }
 
 }

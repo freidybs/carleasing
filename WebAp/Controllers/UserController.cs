@@ -48,7 +48,13 @@ namespace WebAp.Controllers
 
         }
 
-
+        [Route("GetCurrentUser")]
+        [HttpGet]
+        public UserDTO getCurrent()
+        {
+            var id = Helper.getCurrentUserId(Request.GetRequestContext());
+            return UserFunction.GetUserById(id);
+        }
         [Route("UploadPhotos")]
         [HttpPost]
         public string UploadFile(string id)

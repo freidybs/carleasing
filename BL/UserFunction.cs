@@ -11,7 +11,6 @@ namespace BL
 {
     public class UserFunction
     {
-       
         public static UserDTO  login(UserDTO userD)
         {
             using (carLeasingEntities db = new carLeasingEntities())
