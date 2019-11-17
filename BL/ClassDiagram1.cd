@@ -21,13 +21,6 @@
       <FileName>insuranceFunction.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BL.UserFunction">
-    <Position X="4" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABEAA=</HashCode>
-      <FileName>UserFunction.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BL.Casting.CarCasting">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -68,6 +61,13 @@
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Casting\UserCasting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.UserFunction">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABEAA=</HashCode>
+      <FileName>UserFunction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BL.SupplyFunction">
