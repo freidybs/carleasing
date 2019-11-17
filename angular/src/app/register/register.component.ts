@@ -11,7 +11,8 @@ export class RegisterComponent implements OnInit {
   user:User=new User();
   constructor(private registerService:RegisterService,private router:Router) { }
   insuranceTypes;
-  
+  newFile;
+  fileList:FormData[];
   ngOnInit() {
 this.registerService.getInsurance().subscribe((res)=>{
   this.insuranceTypes=res;
@@ -23,7 +24,9 @@ this.registerService.getInsurance().subscribe((res)=>{
 Save(){
 this.registerService.save(this.user).subscribe(
   (res)=>{
-alert("פרטיך נשמרו בהצלחה");
+    if(res!=null)
+    alert("פרטיך נשמרו בהצלחה");
+    this.saveImg(res['userId']);
   },
   (err)=>{
     alert("err");
@@ -36,5 +39,24 @@ alert("פרטיך נשמרו בהצלחה");
 log(){
   console.log(this.user.insuranceType);
 }
+addImage(event) {
 
+  this. fileList = event.target.files;
+ 
+}
+
+saveImg(id:number){
+  let image1: FormData = new FormData();
+
+  if (this.fileList.length > 0) {
+    for (let i = 0; i < this.fileList.length; i++) {
+      this.newFile = this.fileList[i];
+      image1.append(i.toString(), this.newFile, this.newFile.name);
+    }
+    this.registerService.uploadPhotos(image1, id).subscribe((res) => {
+      localStorage.setItem('userImage',res.toString());
+      debugger
+     })
+  }
+}
 }

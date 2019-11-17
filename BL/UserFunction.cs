@@ -12,28 +12,26 @@ namespace BL
     public class UserFunction
     {
        
-        public static bool  login(UserDTO userD)
+        public static UserDTO  login(UserDTO userD)
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 var user = db.Users.FirstOrDefault(p => p.email == userD.email && p.password == userD.password);
-                if (user != null)
-                    return true;
-                return false;
+                return Casting.UserCasting.castToDto(user);
             }
 
         }
-        public static bool register(UserDTO user)
+        public static UserDTO register(UserDTO user)
         {
             using (carLeasingEntities db = new carLeasingEntities())
             { 
                 var u = db.Users.FirstOrDefault(p => p.password== user.password);
                 if (u != null)
-                    return false;
+                    return null;
                 User newUser = Casting.UserCasting.castToDal(user);
-                db.Users.Add(newUser);
+               var uu= db.Users.Add(newUser);
                 db.SaveChanges();
-                return true;
+                return Casting.UserCasting.castToDto(uu);
             }
             
         }

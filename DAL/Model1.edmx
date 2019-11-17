@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="carId" />
@@ -91,6 +91,7 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="insuranceType" Type="int" Nullable="false" />
+          <Property Name="picture" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="fk_1">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -213,18 +214,71 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="carLeasingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="carId" />
+          </Key>
+          <Property Name="carId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numSeats" Type="Int32" Nullable="false" />
+          <Property Name="trunc" Type="Boolean" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="owner" Type="Int32" Nullable="false" />
+          <Property Name="insuranceType" Type="Int32" Nullable="false" />
+          <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="carNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.fk_1" FromRole="Car" ToRole="Users" />
+          <NavigationProperty Name="Insurance" Relationship="Self.FK_Car_Insurance" FromRole="Car" ToRole="Insurance" />
+        </EntityType>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="demanedId" />
+          </Key>
+          <Property Name="demanedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromDate" Type="DateTime" Precision="3" />
+          <Property Name="fromHour" Type="Time" Precision="7" />
+          <Property Name="toDate" Type="DateTime" Precision="3" />
+          <Property Name="toHour" Type="Time" Precision="7" />
+          <Property Name="Locationx" Type="Double" />
+          <Property Name="Locationy" Type="Double" />
+          <Property Name="interestedId" Type="Int32" />
+          <Property Name="numSeats" Type="Int32" />
+          <Property Name="carCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Transactions" Relationship="Self.fk_3" FromRole="Demand" ToRole="Transaction" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Demand_Users" FromRole="Demand" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Insurance">
           <Key>
             <PropertyRef Name="insuranceId" />
           </Key>
           <Property Name="insuranceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="insuranceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Insurance" FromRole="Insurance" ToRole="Car" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Insurance" FromRole="Insurance" ToRole="Users" />
-          <NavigationProperty Name="Cars" Relationship="carLeasingModel.FK_Car_Insurance" FromRole="Insurance" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="supplyId" />
+          </Key>
+          <Property Name="supplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fromDate" Type="DateTime" Precision="3" />
+          <Property Name="fromHour" Type="Time" Precision="7" />
+          <Property Name="toDate" Type="DateTime" Precision="3" />
+          <Property Name="toHour" Type="Time" Precision="7" />
+          <Property Name="carLocationx" Type="Double" />
+          <Property Name="supplyU" Type="Int32" />
+          <Property Name="carLocationy" Type="Double" />
+          <NavigationProperty Name="Transactions" Relationship="Self.fk_4" FromRole="Supply" ToRole="Transaction" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Supply_Users" FromRole="Supply" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -247,8 +301,8 @@
           <Property Name="beginHour" Type="Time" Precision="7" />
           <Property Name="endDate" Type="DateTime" Precision="3" />
           <Property Name="endHour" Type="Time" Precision="7" />
-          <NavigationProperty Name="Supply" Relationship="carLeasingModel.fk_4" FromRole="Transaction" ToRole="Supply" />
-          <NavigationProperty Name="Demand" Relationship="carLeasingModel.fk_3" FromRole="Transaction" ToRole="Demand" />
+          <NavigationProperty Name="Demand" Relationship="Self.fk_3" FromRole="Transaction" ToRole="Demand" />
+          <NavigationProperty Name="Supply" Relationship="Self.fk_4" FromRole="Transaction" ToRole="Supply" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -261,11 +315,60 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="insuranceType" Type="Int32" Nullable="false" />
+          <Property Name="picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cars" Relationship="Self.fk_1" FromRole="Users" ToRole="Car" />
+          <NavigationProperty Name="Demands" Relationship="Self.FK_Demand_Users" FromRole="Users" ToRole="Demand" />
           <NavigationProperty Name="Insurance" Relationship="Self.FK_Users_Insurance" FromRole="Users" ToRole="Insurance" />
-          <NavigationProperty Name="Cars" Relationship="carLeasingModel.fk_1" FromRole="User" ToRole="Car" />
-          <NavigationProperty Name="Demands" Relationship="carLeasingModel.FK_Demand_Users" FromRole="User" ToRole="Demand" />
-          <NavigationProperty Name="Supplies" Relationship="carLeasingModel.FK_Supply_Users" FromRole="User" ToRole="Supply" />
+          <NavigationProperty Name="Supplies" Relationship="Self.FK_Supply_Users" FromRole="Users" ToRole="Supply" />
         </EntityType>
+        <Association Name="fk_1">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Car" Type="Self.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_Insurance">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
+          <End Role="Car" Type="Self.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="insuranceId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="insuranceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_3">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="demanedId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="demandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="interestedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Insurance">
           <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -278,62 +381,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="carLeasingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Insurances" EntityType="Self.Insurance" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Users_Insurance" Association="Self.FK_Users_Insurance">
-            <End Role="Insurance" EntitySet="Insurances" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <EntitySet Name="Supplies" EntityType="carLeasingModel.Supply" />
-          <AssociationSet Name="fk_4" Association="carLeasingModel.fk_4">
-            <End Role="Supply" EntitySet="Supplies" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
-          <EntitySet Name="Demands" EntityType="carLeasingModel.Demand" />
-          <AssociationSet Name="fk_3" Association="carLeasingModel.fk_3">
-            <End Role="Demand" EntitySet="Demands" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
-          <EntitySet Name="Cars" EntityType="carLeasingModel.Car" />
-          <AssociationSet Name="fk_1" Association="carLeasingModel.fk_1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Car_Insurance" Association="carLeasingModel.FK_Car_Insurance">
-            <End Role="Insurance" EntitySet="Insurances" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Demand_Users" Association="carLeasingModel.FK_Demand_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Demand" EntitySet="Demands" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Supply_Users" Association="carLeasingModel.FK_Supply_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Supply" EntitySet="Supplies" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Supply">
-          <Key>
-            <PropertyRef Name="supplyId" />
-          </Key>
-          <Property Name="supplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="carNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fromDate" Type="DateTime" Precision="3" />
-          <Property Name="fromHour" Type="Time" Precision="7" />
-          <Property Name="toDate" Type="DateTime" Precision="3" />
-          <Property Name="toHour" Type="Time" Precision="7" />
-          <Property Name="carLocationx" Type="Double" />
-          <Property Name="carLocationy" Type="Double" />
-          <NavigationProperty Name="Transactions" Relationship="carLeasingModel.fk_4" FromRole="Supply" ToRole="Transaction" />
-          <Property Name="supplyU" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="carLeasingModel.FK_Supply_Users" FromRole="Supply" ToRole="User" />
-        </EntityType>
         <Association Name="fk_4">
-          <End Type="carLeasingModel.Supply" Role="Supply" Multiplicity="0..1" />
-          <End Type="carLeasingModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supply">
               <PropertyRef Name="supplyId" />
@@ -343,95 +393,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Demand">
-          <Key>
-            <PropertyRef Name="demanedId" />
-          </Key>
-          <Property Name="demanedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fromDate" Type="DateTime" Precision="3" />
-          <Property Name="fromHour" Type="Time" Precision="7" />
-          <Property Name="toDate" Type="DateTime" Precision="3" />
-          <Property Name="toHour" Type="Time" Precision="7" />
-          <Property Name="Locationx" Type="Double" />
-          <Property Name="Locationy" Type="Double" />
-          <Property Name="interestedId" Type="Int32" />
-          <NavigationProperty Name="Transactions" Relationship="carLeasingModel.fk_3" FromRole="Demand" ToRole="Transaction" />
-          <Property Name="numSeats" Type="Int32" />
-          <Property Name="carCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="carLeasingModel.FK_Demand_Users" FromRole="Demand" ToRole="User" />
-        </EntityType>
-        <Association Name="fk_3">
-          <End Type="carLeasingModel.Demand" Role="Demand" Multiplicity="0..1" />
-          <End Type="carLeasingModel.Transaction" Role="Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Demand">
-              <PropertyRef Name="demanedId" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="demandId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Car">
-          <Key>
-            <PropertyRef Name="carId" />
-          </Key>
-          <Property Name="carId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="carCompany" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="numSeats" Type="Int32" Nullable="false" />
-          <Property Name="trunc" Type="Boolean" Nullable="false" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="owner" Type="Int32" Nullable="false" />
-          <Property Name="insuranceType" Type="Int32" Nullable="false" />
-          <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="carNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="carLeasingModel.fk_1" FromRole="Car" ToRole="User" />
-          <NavigationProperty Name="Insurance" Relationship="carLeasingModel.FK_Car_Insurance" FromRole="Car" ToRole="Insurance" />
-        </EntityType>
-        <Association Name="fk_1">
-          <End Type="carLeasingModel.User" Role="User" Multiplicity="1" />
-          <End Type="carLeasingModel.Car" Role="Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="owner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Car_Insurance">
-          <End Type="carLeasingModel.Insurance" Role="Insurance" Multiplicity="1" />
-          <End Type="carLeasingModel.Car" Role="Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Insurance">
-              <PropertyRef Name="insuranceId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="insuranceType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Demand_Users">
-          <End Type="carLeasingModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="carLeasingModel.Demand" Role="Demand" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="Demand">
-              <PropertyRef Name="interestedId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Supply_Users">
-          <End Type="carLeasingModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="carLeasingModel.Supply" Role="Supply" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="userId" />
             </Principal>
             <Dependent Role="Supply">
@@ -439,17 +405,103 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="carLeasingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="Self.Car" />
+          <EntitySet Name="Demands" EntityType="Self.Demand" />
+          <EntitySet Name="Insurances" EntityType="Self.Insurance" />
+          <EntitySet Name="Supplies" EntityType="Self.Supply" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="fk_1" Association="Self.fk_1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_Insurance" Association="Self.FK_Car_Insurance">
+            <End Role="Insurance" EntitySet="Insurances" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_3" Association="Self.fk_3">
+            <End Role="Demand" EntitySet="Demands" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Users" Association="Self.FK_Demand_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Demand" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Insurance" Association="Self.FK_Users_Insurance">
+            <End Role="Insurance" EntitySet="Insurances" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_4" Association="Self.fk_4">
+            <End Role="Supply" EntitySet="Supplies" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_Users" Association="Self.FK_Supply_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Supply" EntitySet="Supplies" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="carLeasingModelStoreContainer" CdmEntityContainer="carLeasingEntities">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="carLeasingModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="carId" ColumnName="carId" />
+                <ScalarProperty Name="carCompany" ColumnName="carCompany" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="numSeats" ColumnName="numSeats" />
+                <ScalarProperty Name="trunc" ColumnName="trunc" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="insuranceType" ColumnName="insuranceType" />
+                <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+                <ScalarProperty Name="file" ColumnName="file" />
+                <ScalarProperty Name="carNum" ColumnName="carNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demands">
+            <EntityTypeMapping TypeName="carLeasingModel.Demand">
+              <MappingFragment StoreEntitySet="Demand">
+                <ScalarProperty Name="demanedId" ColumnName="demanedId" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="fromHour" ColumnName="fromHour" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="toHour" ColumnName="toHour" />
+                <ScalarProperty Name="Locationx" ColumnName="Locationx" />
+                <ScalarProperty Name="Locationy" ColumnName="Locationy" />
+                <ScalarProperty Name="interestedId" ColumnName="interestedId" />
+                <ScalarProperty Name="numSeats" ColumnName="numSeats" />
+                <ScalarProperty Name="carCompany" ColumnName="carCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Insurances">
             <EntityTypeMapping TypeName="carLeasingModel.Insurance">
               <MappingFragment StoreEntitySet="Insurance">
                 <ScalarProperty Name="insuranceId" ColumnName="insuranceId" />
                 <ScalarProperty Name="insuranceName" ColumnName="insuranceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplies">
+            <EntityTypeMapping TypeName="carLeasingModel.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="supplyId" ColumnName="supplyId" />
+                <ScalarProperty Name="carNum" ColumnName="carNum" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="fromHour" ColumnName="fromHour" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="toHour" ColumnName="toHour" />
+                <ScalarProperty Name="carLocationx" ColumnName="carLocationx" />
+                <ScalarProperty Name="supplyU" ColumnName="supplyU" />
+                <ScalarProperty Name="carLocationy" ColumnName="carLocationy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -487,55 +539,7 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="insuranceType" ColumnName="insuranceType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Supplies">
-            <EntityTypeMapping TypeName="carLeasingModel.Supply">
-              <MappingFragment StoreEntitySet="Supply">
-                <ScalarProperty Name="supplyU" ColumnName="supplyU" />
-                <ScalarProperty Name="carLocationy" ColumnName="carLocationy" />
-                <ScalarProperty Name="carLocationx" ColumnName="carLocationx" />
-                <ScalarProperty Name="toHour" ColumnName="toHour" />
-                <ScalarProperty Name="toDate" ColumnName="toDate" />
-                <ScalarProperty Name="fromHour" ColumnName="fromHour" />
-                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
-                <ScalarProperty Name="carNum" ColumnName="carNum" />
-                <ScalarProperty Name="supplyId" ColumnName="supplyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Demands">
-            <EntityTypeMapping TypeName="carLeasingModel.Demand">
-              <MappingFragment StoreEntitySet="Demand">
-                <ScalarProperty Name="carCompany" ColumnName="carCompany" />
-                <ScalarProperty Name="numSeats" ColumnName="numSeats" />
-                <ScalarProperty Name="interestedId" ColumnName="interestedId" />
-                <ScalarProperty Name="Locationy" ColumnName="Locationy" />
-                <ScalarProperty Name="Locationx" ColumnName="Locationx" />
-                <ScalarProperty Name="toHour" ColumnName="toHour" />
-                <ScalarProperty Name="toDate" ColumnName="toDate" />
-                <ScalarProperty Name="fromHour" ColumnName="fromHour" />
-                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
-                <ScalarProperty Name="demanedId" ColumnName="demanedId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cars">
-            <EntityTypeMapping TypeName="carLeasingModel.Car">
-              <MappingFragment StoreEntitySet="Car">
-                <ScalarProperty Name="carNum" ColumnName="carNum" />
-                <ScalarProperty Name="file" ColumnName="file" />
-                <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
-                <ScalarProperty Name="insuranceType" ColumnName="insuranceType" />
-                <ScalarProperty Name="owner" ColumnName="owner" />
                 <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="trunc" ColumnName="trunc" />
-                <ScalarProperty Name="numSeats" ColumnName="numSeats" />
-                <ScalarProperty Name="model" ColumnName="model" />
-                <ScalarProperty Name="carCompany" ColumnName="carCompany" />
-                <ScalarProperty Name="carId" ColumnName="carId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

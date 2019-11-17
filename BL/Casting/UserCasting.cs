@@ -19,7 +19,8 @@ namespace BL.Casting
                 firstName = user.firstName,
                 password = user.password,
                 phone = user.phone,
-                insuranceType=user.insuranceType
+                insuranceType=user.insuranceType,
+                picture=user.picture
             };
 
 
@@ -38,7 +39,8 @@ namespace BL.Casting
                     password = userDTO.password,
                     Cars = db.Cars.Where(c => c.owner == userDTO.userId).ToList(),
                     //Demands = db.Demands.Where(d => d.interestedId == userDTO.userId).ToList(),
-                    insuranceType=userDTO.insuranceType
+                    insuranceType=userDTO.insuranceType ,
+                    picture=userDTO.picture
                 };
             }
         }

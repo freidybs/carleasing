@@ -29,12 +29,13 @@ namespace DAL
         public string email { get; set; }
         public string password { get; set; }
         public int insuranceType { get; set; }
+        public string picture { get; set; }
     
-        public virtual Insurance Insurance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Car> Cars { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Demand> Demands { get; set; }
+        public virtual Insurance Insurance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supplies { get; set; }
     }
