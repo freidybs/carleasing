@@ -1,18 +1,35 @@
 <div><button *ngIf="!data" (click)="supplyDetails()">add supply</button></div>
   <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
-<mat-card class="example-card" *ngFor="let supply of supplyList">
+<mat-card id="supplyList"class="example-card" *ngFor="let supply of supplyList">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"  [style.background]="'url(' + image + ')'">
-    </div>
-    <mat-card-title>{{supply.fromHour }}</mat-card-title>
-    <mat-card-subtitle>{{supply.fromDate | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+    <div mat-card-avatar class="example-header-image"></div>
+   <mat-card-title>מרחק של:</mat-card-title>
+    
   </mat-card-header>
  
   <mat-card-content *ngIf="car">
-   
-    <img mat-card-image  [src]="sanitize(getCar(supply.carNum))" alt="Photo of a Shiba Inu"> 
-
+      <mat-card-subtitle>
+          <label>מהתאריך:</label>
+          {{supply.fromDate}}
+            </mat-card-subtitle>
+        <mat-card-subtitle><label>עד התאריך:</label>
+          {{supply.toDate}}
+            </mat-card-subtitle>
+            <mat-card-subtitle> <label>מהשעה:</label>
+              {{supply.fromHour}}    
+                 </mat-card-subtitle>
+            <mat-card-subtitle>
+                <label>עד השעה:</label>
+                {{supply.toHour}}   
+        </mat-card-subtitle>
+    
+    <img mat-card-image  [src]="sanitize(getCarPicture(supply.carNum))" alt="Photo of a Shiba Inu"> 
+    <p><label>תאור:</label>
+      {{getCar(supply.carNum).description}}</p>
     {{supply.carNum}}
+    <mat-card-actions>
+      <button class="button">מתאים לי</button> 
+    </mat-card-actions>
   </mat-card-content>
 
 </mat-card>

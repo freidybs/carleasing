@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http'
 import { User } from '../model/user';
-import { GlobalService } from '../global/global.service';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 baseRoute:string="http://localhost:58516/api/";
-  constructor(private http:HttpClient,private globalService:GlobalService) {
+  constructor(private http:HttpClient) {
    
    }
    //loginSample(user:User){
@@ -22,10 +21,7 @@ baseRoute:string="http://localhost:58516/api/";
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },    
     });  
   }  
-  getCurrentUser(){
-return this.http.get(this.baseRoute+"User/GetCurrentUser",this.globalService.httpOptions)
-  }
-//    login(user:User){
-//       return  this.http.post(this.baseRoute+"User?subItem=login",user);
-//     }
+  // login(user:User){
+  //    return  this.http.post(this.baseRoute+"User?subItem=login",user);
+  //  }
 }
