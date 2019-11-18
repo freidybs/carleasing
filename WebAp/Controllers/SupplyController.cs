@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 
 
+
 namespace WebAp.Controllers
 {
     //[EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -54,9 +55,9 @@ namespace WebAp.Controllers
            
         }
       [HttpDelete]
-       public void deleteSupply(int supplyid)
+       public void deleteSupply(int id)
        {
-          SupplyFunction.deleteSupply(supplyid);
+          SupplyFunction.deleteSupply(id);
        }
        [HttpGet]
        [Route("userSupplies")]

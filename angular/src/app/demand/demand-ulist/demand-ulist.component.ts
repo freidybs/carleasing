@@ -34,7 +34,7 @@ export class DemandUListComponent implements OnInit {
       this.demandService.deleteDemand(id).subscribe(
         (res)=>
         {
-          this.dataSource=this.dataSource.filter(item=>item.demandId!=id);
+          this.dataSource=this.dataSource.filter(item=>item.demanedId!=id);
           alert("ok");
         },
         (err)=>
