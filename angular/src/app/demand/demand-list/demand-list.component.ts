@@ -3,7 +3,6 @@ import { Demand } from 'src/app/model/demand';
 import { DemandService } from '../demand.service';
 import { Router } from '@angular/router';
 import { Suplly } from 'src/app/model/supply';
-import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-demand-list',
@@ -11,27 +10,22 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./demand-list.component.css']
 })
 export class DemandListComponent implements OnInit {
-public demandList:Array<Demand>;
+demandList:Array<Demand>;
 demand:Demand=new Demand();
 supplyList:Array<Suplly>;
-image;
- 
- 
-
   constructor(private demandService:DemandService, private router:Router) { }
 
   ngOnInit() {
-  this.image=  localStorage.getItem('userImage');
  this.demandService.GetAllDemands().subscribe(
   (res:Array<Demand>)=>{
     this.demandList=res;
   }
- );
-}
+ )
+  }
 
   demandDetails()
     {
       return this.router.navigate(['demand-details']);
     }
-    
+  
 }

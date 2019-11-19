@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Car } from 'src/app/model/car';
 import { CarService } from '../car.service';
@@ -85,3 +85,8 @@ edit(car:Car)
  
 }
 }
+
+
+
+
+

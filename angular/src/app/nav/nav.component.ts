@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material/icon';
 
 @Component({
   selector: 'app-nav',
@@ -11,8 +9,8 @@ import {MatIconRegistry} from '@angular/material/icon';
 export class NavComponent implements OnInit {
   
 
-  constructor(private router:Router){ }
-  
+  constructor(private router:Router) { }
+
   ngOnInit() {
   }
   demand(){
@@ -33,17 +31,15 @@ export class NavComponent implements OnInit {
   //   var longitude = pos.coords.longitude;
   //    console.log("Positon:"+latitude +" "+longitude);
   // }
-  /* userProfile(){
+  userProfile(){
    
     var userMail=localStorage.getItem("userMail");
 if(userMail)
-  this.router.navigate(['user-profile']);
+  this.router.navigate(['profile-info']);
 else
 this.router.navigate(['login']);
   }
   main(){
     this.router.navigate(['main']);
   }
-}
- */
 }

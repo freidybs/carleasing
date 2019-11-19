@@ -30,76 +30,52 @@ selectedMarker;
 locations:Array<Suplly>;
 supply: Suplly = new Suplly();
 supplyList: Array<Suplly>;
-  constructor(private demandServic: DemandService, private router: Router,private supplyService:SupplyService) { }
+  constructor(private demandServic: DemandService, private route: Router,private supplyService:SupplyService) { }
   ngOnInit() {
     this.zoom = 10;
     this.latitude = 52.520008;
     this.longitude = 13.404954;
     this.setCurrentPosition();
-    // this.demandServic.getSuppliesLocation(this.demand).subscribe(
-    //   (res:Array<Suplly>)=>
-    //   {
-    //     this.locations=res;
-    //   }
-    // )
-  }
-  // saveDemand() {
-  //   this.demandServic.saveDemand(this.demand).subscribe(
-  //     (res) => { alert(" o k"); },
-  //     (err) => { alert(" "); }
-  //   );
-  // }
-  /* lookForSuggest() {
-    this.demandServic.lookForSuggest(this.demand).subscribe(
-      (res: any) => {
-        /* this.getCar.emit(res)
-        this.route.navigate(['car-details']); */
-        
-       
-      /*   console.log(res);
-      },
-      (err) => {
-        alert("not found");
-      }
-    ); 
-  }*/
-  private setCurrentPosition() {
+    
+  }//המפה תיפתח במיקום שהמשתמש נמצא
+    private setCurrentPosition() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.latitude = position.coords.latitude;//קו רוחב
+        this.longitude = position.coords.longitude;//קו אורך
         this.zoom = 12;
       });
     }
   }
- 
+ //השלמה אוטומטית של כתובות
   onAutocompleteSelected(result: PlaceResult) {
     console.log('onAutocompleteSelected: ', result);
   }
- 
+   //סימון מיקום הבקשה במפה
   onLocationSelected(location: Location) {
     this.demand.Locationy = location.latitude;
     this.demand.Locationx = location.longitude;
     this.latitude=location.latitude;
-    
     this.longitude=location.longitude;
-
     console.log('onLocationSelected: ',  this.demand.Locationx,this.demand.Locationy);
   }
 autoCompleteCallback1(selectedData:any) {
   //do any necessery stuff.
   console.log('sss!!',selectedData);
 } 
+//סימון מרקר  על המפה
 selectMarker(event) {
   this.selectedMarker = {
     lat: event.latitude,
     lng: event.longitude
   };
 }
+//רשימת ההצעות התואמות לחיפוש
 GetFilterList()
 {
-  this.router.navigate(['supply-list/',this.demand]);
+  this.route.navigate(['supply-list/',this.demand]);
 }
+//חיפוש הצעה מתאימה
 searchSupply(details) {
   this.supplyService.GetFilterList(details).subscribe(
     (res: Array<Suplly>) => {

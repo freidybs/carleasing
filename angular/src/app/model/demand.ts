@@ -2,7 +2,7 @@ export class Demand {
     constructor(){
         
     }
-        demanedId:number;
+       
         fromHour:Date;
         fromDate:Date;
         toDate:Date;

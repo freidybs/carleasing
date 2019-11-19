@@ -18,10 +18,4 @@ export class RegisterService {
    getInsurance(){
      return this.http.get(this.baseRoute+"Insurance");
    }
-   uploadPhotos(files,id){
-    
-    return this.http.post(this.baseRoute+"User/uploadPhotos?id="+id, files);
-
-
-  }
 }
