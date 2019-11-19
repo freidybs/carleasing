@@ -27,7 +27,6 @@ namespace WebAp.Controllers
             return carFunction.carList(id);
 
         }
-        //test
         //[HttpGet]
         //[Route("getAllList")]
         //public List<CarDTO> getAllcars()
