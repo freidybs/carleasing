@@ -2,9 +2,10 @@ export class Suplly {
     constructor(){
         
     }
+    supplyId:number;
         carNum:string;
         fromHour:Date;
-        fromdate:Date;
+        fromDate:Date;
         toDate:Date;
         toHour:Date;
         carLocationx:number;

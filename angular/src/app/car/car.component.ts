@@ -33,6 +33,7 @@ export class CarComponent implements OnInit {
     this.CarService.saveCar(this.car).subscribe(
       (res:number)=>{
         alert("ok");
+      
         this.saveImg(res)
        
       },
@@ -44,10 +45,7 @@ export class CarComponent implements OnInit {
     );
   }
   
-  // addImage(event) {
-  //   this.files=event.target.files;
-
-  //  }
+  
   addImage(event) {
 
     this. fileList = event.target.files;

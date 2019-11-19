@@ -1,8 +1,24 @@
-<p>
-  user-profile works!
-</p>
-<button (click)="myProfile()">myProfile</button>
-<button (click)="mydemands()">mydemands</button>
-<button (click)="myCars()">myCars</button>
-<button (click)="mySupplies()">mySupplies</button>
 
+
+<button  mat-icon-button [matMenuTriggerFor]="menu"><img src="src\icons\001-user.png" id="user"/>
+</button>
+<mat-menu #menu="matMenu" >
+    <button dir="rtl" mat-menu-item (click)="myProfile()">
+      <span >הפרופיל שלי</span>
+      <mat-icon>directions_car</mat-icon>
+    </button>
+    <button mat-menu-item  (click)="myCars()" >
+      <mat-icon>voicemail</mat-icon>
+      <span >הרכבים שלי </span>
+    </button>
+    <button mat-menu-item  (click)="mySupplies()">
+      <mat-icon>notifications_off</mat-icon>
+      <span >ההצעות שלי</span>
+    </button>
+    <button mat-menu-item (click)="mydemands()">
+        <mat-icon>notifications_off</mat-icon>
+        <span>הבקשות שלי</span>
+      </button>
+  </mat-menu>
+
+  

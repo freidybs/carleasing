@@ -13,16 +13,20 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class SupplyListComponent implements OnInit {
   @Input() data;
- supplyList: Array<Suplly>;
+public supplyList: Array<Suplly>;
   demand = new Demand();
   supply: Suplly = new Suplly();
   car:Car[];
+
+  image;
+
+ public dataSource: any;
+  columnsToDisplay = [ 'delete','edit','toHour','fromHour', 'toDate',' fromDate' ,'carNum'];
+
   constructor(private supplyService: SupplyService, private router: Router, private aRouter: ActivatedRoute,private sanitizer:DomSanitizer) { }
 
-  // ngOnChanges(){
-  //   this.supplyList=this.data;
-  // }
   ngOnInit() {
+    this.image=  localStorage.getItem('userImage');
     // this.aRouter.params.subscribe(
     //   (p: Demand) => {
     //     console.log(p);
@@ -34,6 +38,9 @@ export class SupplyListComponent implements OnInit {
     //     console.log(this.supplyList);
     //   }
     // )
+    
+       /*  this.changeDetectorRefs.detectChanges(); */
+      
 if(!this.data)
    { this.supplyService.GetAllSupply().subscribe(
       (res: Array<Suplly>) => {
@@ -58,26 +65,15 @@ if(!this.data)
         this.supplyList = res;
       });
   }
-  getCarPicture(carNum){
+  getCar(carNum){
     var x=this.car.find(c=>c.carNum==carNum).picture;
     return x;
 
 
 
   }
-  getCar(carNum){
-    var x=this.car.find(c=>c.carNum==carNum);
-    return x;
-
-
-
-  }
-  
   sanitize(url:string){
     return this.sanitizer.bypassSecurityTrustUrl(url);
 }
-
-
-
 
 }

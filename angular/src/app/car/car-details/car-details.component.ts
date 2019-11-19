@@ -28,11 +28,7 @@ export class CarDetailsComponent implements OnInit {
 
   }
 
-  getCar() {
-    this.carService.getById(this.id).subscribe((res) => {
-      this.car = res;
-    })
-  }
+ 
   
 
 }

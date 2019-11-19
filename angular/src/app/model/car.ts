@@ -2,7 +2,7 @@ export class Car {
     constructor(){
         
     }
-    carId:number;
+        carId:number;
         carNum:string;
         carCompany:string;
         model:number;

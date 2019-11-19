@@ -1,78 +1,41 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="sweetalert2.all.min.js"></script>
-<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap DatePicker</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    </head>
-<body>
-  <div id="login">
-      <div class="container">
-          <div id="login-row" class="row justify-content-center align-items-center">
-              <div id="login-column" class="col-md-6">
-                  <div id="login-box" class="col-md-12">
-                        <!-- <form id="login-form" class="form" action="" method="post"> -->
-                          <h3 class="text-center text-info">:חיפוש רכב</h3>
-                           <div class="form-group">
-                              <label class="text-info">מהתאריך:</label>
-       
-                                 <input class="form-control" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="בחר תאריך:" [(ngModel)]="supplySearch.fromDate">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                   <mat-datepicker #picker></mat-datepicker>
-                             </div>
-  
-                             <div class="form-group">
-                               <label class="text-info">עד התאריך:</label>
-      
-                                <input class="form-control"matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker1" placeholder="בחר תאריך"[(ngModel)]="supplySearch.toDate" >
-                                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                 <mat-datepicker #picker1></mat-datepicker>
-                               </div>
-                               <div class="form-group">
-                                 <label class="text-info">מהשעה:</label>
-
-                                     <input type="text" class="form-control" placeholder="הזן שעה"name="fromHour" [(ngModel)]="supplySearch.fromHour">
-                               </div>
-
-                                <div class="form-group">
-                                   <label class="text-info">עד השעה:</label>
-
-                                     <input type="text" class="form-control" placeholder="הזן שעה" name="toHour" [(ngModel)]="supplySearch.toHour">
-                                </div>
-
-                                 <div class="form-group">
-                                  <label class="text-into"> :מיקום </label>
-                                   <input class="form-control" matInput matGoogleMapsAutocomplete [country]="il"  (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                          (onLocationSelected)="onLocationSelected($event)">
-                                  </div>
-                                <div class="form-group">
-                                   <label  class="text-into">מספר מושבים</label>
-                                 <input type="text" class="form-control" [(ngModel)]="supplySearch.numSeats" >
-                                </div>
-                               <div class="form-group">
-                                    <label>חברה</label>
-                                     <input type="text" class="form-control" [(ngModel)]="supplySearch.carCompany" >
-                                  </div>
-                                  <div class="wrapper">
-                                    <button class="button"(click)="searchSupply()">חפש</button>
-                                  </div>
-                         <!-- </form> -->
-                  </div>
-             </div>
-          </div>
-      </div>
-   </div>
-
-
-</body>
-
-
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="fromHour" name="fromHour" [(ngModel)]="supplySearch.fromHour">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="from date"
+      [(ngModel)]="supplySearch.fromDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="toHour" name="toHour" [(ngModel)]="supplySearch.toHour">
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker1" placeholder="to date"
+      [(ngModel)]="supplySearch.toDate">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="line">
+  <mat-label> Address using the directive </mat-label>
+  <input matInput matGoogleMapsAutocomplete [country]="il" (onAutocompleteSelected)="onAutocompleteSelected($event)"
+    (onLocationSelected)="onLocationSelected($event)">
+</div>
+<div class="line">
+  <mat-label>מספר מושבים</mat-label>
+  <input  [(ngModel)]="supplySearch.numSeats" matInput>
+</div>
+<div class="line">
+  <mat-label>חברה</mat-label>
+  <input [(ngModel)]="supplySearch.carCompany" matInput>
+</div>
+<button (click)="searchSupply()">search</button>
 <!-- <button mat-button (click)="saveDemand()">saveDemand</button> -->

@@ -19,9 +19,6 @@ baseroute:string="http://localhost:58516/api/";
     return this.http.get(this.baseroute+"Insurance");
   }
 
-  getById(id:number):Observable<Car>{
-    return this.http.post<Car>(this.baseroute+"Car/getById",id);
-  }
   getCarlist()
   {
     return this.http.get(this.baseroute+"Car/getCarList",this.globalService.httpOptions);
@@ -32,5 +29,12 @@ baseroute:string="http://localhost:58516/api/";
 
 
   }
-  
+  delete(carId:number)
+  {
+    return this.http.delete(this.baseroute+"Car/"+carId);
+  }
+  update(car:Car)
+  {
+    return this.http.post(this.baseroute+"Car/update",car);
+  }
 }
