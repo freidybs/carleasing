@@ -32,5 +32,8 @@ baseroute:string="http://localhost:58516/api/";
 
 
   }
-  
+  delete(id:number)
+  {
+    return this.http.delete(this.baseroute+"Car/"+id);
+  }
 }
