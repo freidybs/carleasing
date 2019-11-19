@@ -5,31 +5,30 @@ import { CarService } from '../car.service';
 import { Router } from '@angular/router';
 import { CarDetailsComponent } from '../car-details/car-details.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {DomSanitizer} from '@angular/platform-browser';
-import Swal from 'sweetalert2';
+
 
 
 @Component({
   selector: 'app-car-list',
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.css'],
- /*  animations: [
+  animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
       state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
-  ], */
+  ],
 })
 export class CarListComponent implements OnInit {
- public carList: Array<Car>;
- 
- public dataSource: any;
-  columnsToDisplay = [ 'delete','edit','numSeats', 'model','carCompany' ,'carNum','picture'];
+  carList: Array<Car>;
+
+  dataSource: any;
+  columnsToDisplay = ['carNum', 'carCompany', 'model', 'numSeats'];
 
 
 
-  constructor(private carService: CarService, private router: Router,private sanitizer:DomSanitizer) { }
+  constructor(private carService: CarService, private router: Router, public dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
 
 
   ngOnInit() {
@@ -39,51 +38,44 @@ export class CarListComponent implements OnInit {
         this.carList = res;
         this.dataSource = this.carList;
         console.log(this.carList);
-       /*  this.changeDetectorRefs.detectChanges(); */
+        this.changeDetectorRefs.detectChanges();
       }
     )
 
   }
-  sanitize(url:string){
-    return this.sanitizer.bypassSecurityTrustUrl(url);
-}
-delete(id:number)
-{
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'כן,מחק!'
-  }).then((result) => {
-    if (result.value) {
-      this.carService.delete(id).subscribe(
-      (res)=>
-      {
-        Swal.fire(
-          'נמחק',
-          'בקשתך נמחקה.',
-          'success'
-        );
-        this.dataSource=this.dataSource.filter(item=>item.carId!=id);
-      },
-      (err)=>
-      {
-        alert("err");
-      }
-    );
-      
+  /* getDetails()
+  {
+   this.router.navigate(['car-details']);
+  } */
+  animal: string;
+  name: string;
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CarDetailsComponent, {
+      height: '400px',
+      width: '600px',
+    });
+    /*  dialogRef.afterClosed().subscribe(result => {
+       console.log('The dialog was closed');
+       this.animal = result;
+     }); */
+
   }
-    
-  })
+
 }
-edit(car:Car)
-{
- return this.router.navigate(['car-details']);
- 
+export interface DialogData {
+  animal: string;
+  name: string;
 }
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
 
 
