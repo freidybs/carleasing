@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { CarDetailsComponent } from '../car-details/car-details.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -49,17 +49,35 @@ export class CarListComponent implements OnInit {
 }
 delete(id:number)
 {
-  this.carService.delete(id).subscribe(
-    (res)=>
-    {
-      this.dataSource=this.dataSource.filter(item=>item.carId!=id);
-      alert("ok");
-    },
-    (err)=>
-    {
-      alert("err");
-    }
-  );
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'כן,מחק!'
+  }).then((result) => {
+    if (result.value) {
+      this.carService.delete(id).subscribe(
+      (res)=>
+      {
+        Swal.fire(
+          'נמחק',
+          'בקשתך נמחקה.',
+          'success'
+        );
+        this.dataSource=this.dataSource.filter(item=>item.carId!=id);
+      },
+      (err)=>
+      {
+        alert("err");
+      }
+    );
+      
+  }
+    
+  })
 }
 edit(car:Car)
 {

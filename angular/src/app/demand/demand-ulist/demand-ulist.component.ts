@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Demand } from 'src/app/model/demand';
 import { Router } from '@angular/router';
 import { DemandService } from '../demand.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-demand-ulist',
   templateUrl: './demand-ulist.component.html',
@@ -25,23 +25,41 @@ export class DemandUListComponent implements OnInit {
       });
       
   }
+  
   demandDetails()
   {
     return this.router.navigate(['demand-details']);
   }
   delete(id:number)
     {
-      this.demandService.deleteDemand(id).subscribe(
+      Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'כן,מחק!'
+    }).then((result) => {
+      if (result.value) {
+        this.demandService.deleteDemand(id).subscribe(
         (res)=>
         {
+          Swal.fire(
+            'נמחק',
+            'בקשתך נמחקה.',
+            'success'
+          );
           this.dataSource=this.dataSource.filter(item=>item.demanedId!=id);
-          alert("ok");
         },
         (err)=>
         {
           alert("err");
         }
       );
+        
     }
-    
+      
+    })
+  }
 }
