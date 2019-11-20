@@ -34,7 +34,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
 
-
+import{AppPassworddDirective}from './app-passwordd.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
