@@ -21,6 +21,7 @@ export class UserDetailsComponent implements OnInit {
     Validators.email,
   ]);
   constructor(private userService: UserService, private registerService: RegisterService) { }
+  //  matcher = new MyErrorStateMatcher();
   ngOnInit() {
     this.registerService.getInsurance().subscribe((res: any) => {
       this.insuranceTypes = res;
@@ -32,7 +33,6 @@ export class UserDetailsComponent implements OnInit {
         });
     })
   }
-  //עדכון פרטי משתמש
   updateDetails() {
     this.userService.updateDetails(this.user).subscribe(
       (res) => {

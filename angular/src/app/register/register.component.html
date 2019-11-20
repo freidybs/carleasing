@@ -24,7 +24,10 @@
     <input matInput placeholder="password" name="password" [(ngModel)]="user.password">
   </mat-form-field>
 </div>
-
+<div class="line">
+  <button type="button" name="image" class="btnRegister" md-button (click)="imgFileInput.click()">הוסף תמונה</button>
+  <input hidden type="file" multiple #imgFileInput (change)="addImage ($event)" /> 
+</div>
 <mat-label>Favorite food</mat-label>
   <mat-select [(ngModel)]="user.insuranceType" (ngModelChange)="log()">
     <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">

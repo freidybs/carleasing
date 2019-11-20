@@ -6,18 +6,14 @@ import { Car } from 'src/app/model/car';
 import { CarService } from 'src/app/car/car.service';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import {Location, Appearance} from '@angular-material-extensions/google-maps-autocomplete';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 /* import {} from '@types/googlemaps'; */
 import PlaceResult = google.maps.places.PlaceResult;
-
-
 @Component({
   selector: 'app-supply-details',
   templateUrl: './supply-details.component.html',
   styleUrls: ['./supply-details.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-
 export class SupplyDetailsComponent implements OnInit {
 supply:Suplly=new Suplly();
 cars:Array<Car>;
@@ -47,7 +43,6 @@ selectedMarker;
 
   saveSupply()
   {console.log(this.supply);
-    debugger;
     this.supplyService.saveSupply(this.supply).subscribe( (res)=>{
       
       alert("work");
@@ -103,7 +98,5 @@ selectedMarker;
       lat: event.latitude,
       lng: event.longitude
     };
-  } 
- 
+  }   
 }
-
