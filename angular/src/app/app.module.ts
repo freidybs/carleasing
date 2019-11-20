@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -30,10 +29,15 @@ import { AgmCoreModule } from '@agm/core';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { MapsComponent } from './maps/maps.component';
 import { SupplySearchComponent } from './supply/supply-search/supply-search.component';
+import {FormsModule, FormControl, ReactiveFormsModule} from '@angular/forms';
+import { AppPassworddDirective } from './app-passwordd.directive';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 @NgModule({
   declarations: [
-  AppComponent,
+   AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -51,9 +55,14 @@ import { SupplySearchComponent } from './supply/supply-search/supply-search.comp
     SupplyListComponent,
     MapsComponent,
     SupplySearchComponent,
-  
-  ],
+    AppPassworddDirective
+
+    
+ ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -75,6 +84,8 @@ import { SupplySearchComponent } from './supply/supply-search/supply-search.comp
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule,
+    BrowserModule,
+MatIconModule,
     
     
   ],
