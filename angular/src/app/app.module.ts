@@ -33,9 +33,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
-
-import{AppPassworddDirective}from './app-passwordd.directive';
+import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -60,12 +61,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DemandUListComponent,
     SupplyUListComponent,
       AppPassworddDirective
-
   
-  ],
+    
+
+    
+ ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
