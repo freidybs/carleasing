@@ -7,8 +7,6 @@ import { GlobalService } from '../global/global.service';
   providedIn: 'root'
 })
 export class SupplyService {
-  
-  
 baseRoute:string="http://localhost:58516/api/";
   constructor(private http:HttpClient,private globalService:GlobalService) { }
   

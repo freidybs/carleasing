@@ -25,7 +25,6 @@
   </mat-form-field>
 </div>
 <div class="line">
-  <!-- <input type="file" name="picture" value="בחר קובץ" [(ngModel)]="car.picture"> -->
   <button type="button" name="image" class="btnRegister" md-button (click)="imgFileInput.click()">הוסף תמונה</button>
   <input hidden type="file" multiple #imgFileInput (change)="addImage ($event)" /> 
 </div>
