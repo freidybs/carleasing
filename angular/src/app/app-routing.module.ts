@@ -15,6 +15,9 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
 import { SupplyDetailsComponent } from './supply/supply-details/supply-details.component';
 import { SupplyListComponent } from './supply/supply-list/supply-list.component';
 import { MapsComponent } from './maps/maps.component';
+import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
+import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component';
+
 const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
@@ -31,7 +34,10 @@ const routes: Routes = [
   {path:'supply-details',component:SupplyDetailsComponent},
   {path:'supply-list',component:SupplyListComponent},
   {path:'supply-list/:demand',component:SupplyListComponent},
-
+  {path:'user-profile',component:UserProfileComponent},
+  {path:'demand-ulist',component:DemandUListComponent},
+  {path:'supply-ulist',component:SupplyUListComponent},
+ 
   { path: 'maps', component: MapsComponent },
   { path: '', component: LoginComponent }
 

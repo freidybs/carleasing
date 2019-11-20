@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 @Component({
   selector: 'app-user-profile',
@@ -24,10 +24,10 @@ myProfile()
 }
 mydemands()
 {
-return this.router.navigate(['demand-list']);
+return this.router.navigate(['demand-ulist']);
 }
 mySupplies()
 {
-  return this.router.navigate(['supply-list']);
+  return this.router.navigate(['supply-ulist']);
 }
 }

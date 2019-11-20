@@ -24,7 +24,9 @@ this.registerService.getInsurance().subscribe((res)=>{
 Save(){
 this.registerService.save(this.user).subscribe(
   (res)=>{
-alert("פרטיך נשמרו בהצלחה");
+    if(res!=null)
+    alert("פרטיך נשמרו בהצלחה");
+    this.saveImg(res['userId']);
   },
   (err)=>{
     alert("err");
