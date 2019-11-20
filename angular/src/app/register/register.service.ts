@@ -11,7 +11,12 @@ export class RegisterService {
   constructor(private http:HttpClient) {
    
    }
-   
+   uploadPhotos(files,id){
+    
+    return this.http.post(this.baseRoute+"User/uploadPhotos?id="+id, files);
+
+
+  };
    save(user:User){
      return  this.http.post(this.baseRoute+"User?subItem=register",user);
    }
