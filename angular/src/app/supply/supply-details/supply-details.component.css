@@ -1,4 +1,39 @@
 agm-map { height: 300px; /* height is required */ }
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width:50%;
+}
+
+.example-full-width {
+  width: 50%;
+}
+body {
+ 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+agm-map { height: 300px; /* height is required */ }
+.example-cover-container {
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+margin-left: 20%;
+margin-right: 20%;
+}
+agm-map { height: 300px; /* height is required */ }
 .example-cover-container {
     display: flex;
     flex-direction: column;
@@ -33,15 +68,22 @@ agm-map { height: 300px; /* height is required */ }
    border:yellow !important;
    text-align: right;
  }
- /*************************
-        button
-*************************/
-.wrapper {
-  text-align: center;
-}
-
+ .well
+ {
+    padding: 35px;
+    padding-left: 30px;
+    box-shadow: 0 0 10px #666666;
+    margin: 4% auto 0;
+    width: 450px;
+ }
 
  
+
+ .input-group-addon
+ {
+   background-color: #ffde6c !important;
+   color: #d17d00 !important;
+ }
 
 .button {
   font-size: 14px;
@@ -128,7 +170,114 @@ agm-map { height: 300px; /* height is required */ }
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
 }
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.mat-error{
+  color:black;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  color:black;}
 
 
+  body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}
 
+  .form-heading { color:#fff; font-size:23px;}
+  .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+  .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+  .login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .main-div {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+    top:-80px;
+  }
+  
+  .login-form .form-group {
+    margin-bottom:10px;
+  }
+  .login-form{ text-align:center;}
+  .forgot a {
+    color: #777777;
+    font-size: 14px;
+    text-decoration: underline;
+    display: inline;
+  }
+  .login-form  .btn.btn-primary {
+    background: #f0ad4e none repeat scroll 0 0;
+    border-color: #f0ad4e;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+  }
+  .forgot {
+    text-align: left; margin-bottom:30px;
+  }
+  .botto-text {
+    color: #ffffff;
+    font-size: 14px;
+    margin: auto;
+  }
+  .login-form .btn.btn-primary.reset {
+    background: #ff9900 none repeat scroll 0 0;
+  }
+  .back { text-align: left; margin-top:10px;}
+  .back a {color: #444444; font-size: 13px;text-decoration: none;}
+  .well
+  {
+     padding: 35px;
+     padding-left: 30px;
+     box-shadow: 0 0 10px #666666;
+     margin: 4% auto 0;
+     width: 450px;
+  }
+  .mat-icon-button{
+    width: 15px !important;
+  }
  
+
+  .input-group-addon
+  {
+    background-color: #f0ad4e;
+    color: #d17d00;
+  }
+  ::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+   }
+   
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+   } 
+   
+   ::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: white !important;;
+   }
+   ::ng-deep.mat-icon-button{
+     width: 5px !important;
+     
+   }
+   mat-datepicker-toggle {
+    color: #d17d00 !important;
+    width: 2px !important;
+   }

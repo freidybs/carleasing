@@ -27,14 +27,15 @@ namespace WebAp.Controllers
             return carFunction.carList(id);
 
         }
-        //[HttpGet]
-        //[Route("getAllList")]
-        //public List<CarDTO> getAllcars()
-        //{
 
-        //    return carFunction.allCars();
+        [HttpGet]
+        [Route("getAllList")]
+        public List<CarDTO> getAllcars()
+        {
 
-        //}
+            return carFunction.allCars();
+
+        }
 
         [Route("UploadPhotos")]
         [HttpPost]

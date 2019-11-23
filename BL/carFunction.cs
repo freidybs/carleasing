@@ -35,13 +35,13 @@ namespace BL
             }
         }
 
-        //public static List<CarDTO> allCars()
-        //{
-        //    using (carLeasingEntities db = new carLeasingEntities())
-        //    {
-        //        return Casting.CarCasting.castListToDTO(db.Cars.ToList());
-        //        }
-        //}
+        public static List<CarDTO> allCars()
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+           {
+                return Casting.CarCasting.castListToDTO(db.Cars.ToList());
+               }
+        }
 
        
 
