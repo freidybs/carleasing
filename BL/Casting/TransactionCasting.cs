@@ -19,7 +19,11 @@ namespace BL.Casting
                 beginHour = transactionDAL.beginHour,
                 endDate = transactionDAL.endDate,
                 endHour = transactionDAL.endHour,
-                demandId = transactionDAL.demandId
+                demandId = transactionDAL.demandId,
+                DemandDTO = transactionDAL.Demand != null ? Casting.DemandCasting.castToDTO(transactionDAL.Demand) : null,
+                SupplyDTO = transactionDAL.Supply != null ? Casting.SupplyCasting.CastToDTO(transactionDAL.Supply):null,
+
+
             };
         }
 

@@ -15,7 +15,8 @@ namespace DTO
         public Nullable<System.TimeSpan> beginHour { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }
         public Nullable<System.TimeSpan> endHour { get; set; }
-
+        public DemandDTO DemandDTO  {get; set; }
+        public SupplyDTO SupplyDTO  {get; set; }
         
     }
 }

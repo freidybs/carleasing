@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -34,11 +33,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
+import { AppPassworddDirective } from './app-passwordd.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component'; 
+
+
 
 @NgModule({
   declarations: [
-  AppComponent,
+   AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -58,11 +61,12 @@ import { TransactionUListComponent } from './transaction/transaction-ulist/trans
     SupplySearchComponent,
     DemandUListComponent,
     SupplyUListComponent,
-    TransactionUListComponent
-    
-  
+    AppPassworddDirective,
+    TransactionUListComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -87,6 +91,8 @@ import { TransactionUListComponent } from './transaction/transaction-ulist/trans
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule,
+    BrowserModule,
+MatIconModule,
     
     
   ],

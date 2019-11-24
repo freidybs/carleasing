@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'add-demand',component:DemandDetailsComponent},
   {path:'supply',component:SupplyComponent},
   {path:'demand-list',component:DemandListComponent},
- {path:'demand-details',component:DemandDetailsComponent},
+  {path:'demand-details',component:DemandDetailsComponent},
   {path:'car',component:CarComponent},
   {path:'car-list',component:CarListComponent},
   {path:'user-details',component:UserDetailsComponent},
@@ -39,7 +39,7 @@ const routes: Routes = [
   {path:'demand-ulist',component:DemandUListComponent},
   {path:'supply-ulist',component:SupplyUListComponent},
   {path:'transaction-ulist',component:TransactionUListComponent},
- 
+
   { path: 'maps', component: MapsComponent },
   { path: '', component: LoginComponent }
 

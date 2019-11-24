@@ -1,14 +1,43 @@
+<head>
 
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email" name="enail" [(ngModel)]="user.email">
-  </mat-form-field>
-  <div class="line">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="סיסמא" name="password" [(ngModel)]="user.password">
-  </mat-form-field>
-</div>
-   
-<div class="line">
-   <button mat-button (click)="logIn()">login</button>
-</div>
-  <button (click)="register()">כדי להרשם לחץ כאן</button>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<h1 class="form-heading">login Form</h1>
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+    <h2>כניסה</h2>
+    <p>בבקשה הזן את כתובת האימייל שלך ואת הסיסמה </p>
+    </div>
+    <!-- <form id="Login"> -->
+        <div class="form-group">
+                <input id="inputEmail" class="form-control" matInput placeholder="אימייל" [formControl]="emailFormControl"  [(ngModel)]="user.email"
+                [errorStateMatcher]="matcher"  >
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+           !!!הקש כתובת תקינה
+         </mat-error>
+         <mat-error *ngIf="emailFormControl.hasError('required')">
+           !!! זה שדה  <strong>חובה</strong>
+         </mat-error>
+        </div>
+        <div class="form-group">
+
+            <input type="password" class="form-control" id="inputPassword" placeholder="סיסמה" appPassword [(ngModel)]="user.password">
+            
+          
+        </div>
+        <div class="forgot">
+        <a href="reset.html">שכחתי סיסמה</a>
+        </div>
+        <div class="forgot">
+            <a href="http://localhost:4200/register">משתמש חדש</a>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="logIn()">הכנס</button>
+
+    <!-- </form> -->
+    </div>
+  
+
+

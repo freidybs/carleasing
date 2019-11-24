@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -31,5 +32,14 @@ namespace WebAp.Controllers
             var id = Helper.getCurrentUserId(Request.GetRequestContext());
             return TransactionFunction.showTransaction(id);
         }
+        //[HttpGet]
+        //[Route("try")]
+        //public MailMessage Try()
+        //{
+        
+        //    return TransactionFunction.SendEmail();
+        //}
     }
 }
+
+

@@ -11,7 +11,7 @@ import { TransactionService } from '../transaction.service';
 export class TransactionUListComponent implements OnInit {
   public supplyList: Array<Suplly>;
   public dataSource: any;
-  columnsToDisplay = [ 'delete','edit','toHour','fromHour', 'toDate','fromDate' ,'carNum'];
+  columnsToDisplay = ['cost', 'toHour','fromHour', 'toDate','fromDate' ,'carNum'];
   constructor(private transactionService: TransactionService, private router: Router) { }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class TransactionUListComponent implements OnInit {
 //     }
 //   );
 // }
-// supplyDetails(supply:Suplly)
-// {
-//  return this.router.navigate(['supply-details']);
- 
-// }
+ transctionDetailsDetails(transaction)
+ {
+  return this.router.navigate(['transction-details']);
+
+ }
 
 
 

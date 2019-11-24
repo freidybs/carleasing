@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
   register works!
 </p>
 <mat-form-field class="example-full-width">
@@ -34,6 +34,50 @@
       {{i.insuranceName}}
     </mat-option>
   </mat-select>
-    <button (click)="Save()">save</button> 
-  
+    <button (click)="Save()">save</button> -->
+    <head> 
+
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      </head>
+      <h1 class="form-heading">login Form</h1>
+      <div class="login-form">
+      <div class="main-div">
+          <div class="panel">
+          <h2>משתמש חדש</h2>
+          <p>בבקשה הזן את פרטיך האישיים   </p>
+          </div>
+          <!-- <form id="Login"> -->
+              <div class="form-group">
+                      <input class="form-control" matInput placeholder="שם פרטי"   [(ngModel)]="user.firstName"  >
+              </div>
+              <div class="form-group">
+                <input  class="form-control" matInput placeholder="שם משפחה"   [(ngModel)]="user.lastName"  >
+        </div>
+              <div class="form-group">
+                <input  id="inputEmail" class="form-control" matInput placeholder=" אימייל"   [(ngModel)]="user.email" >
+           
+        </div>
+        <div class="form-group">
+          <input class="form-control" matInput placeholder=" מספר טלפון נייד"   [(ngModel)]="user.phone" >
+     
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="inputPassword" placeholder="סיסמה" appPassword [(ngModel)]="user.password">
+
+</div>
+<div class="form-group">
+    <button type="button" name="image" class="btnRegister" md-button (click)="imgFileInput.click()">הוסף תמונת פרופיל</button>
+    <input hidden type="file" multiple #imgFileInput (change)="addImage ($event)" /> 
+  </div>
+            
+             
+              <button type="submit" class="btn btn-primary" (click)="Save()">שמור</button>
+      
+          <!-- </form> -->
+          </div>
+        
+      
+      
   

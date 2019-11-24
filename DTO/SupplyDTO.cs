@@ -20,6 +20,7 @@ namespace DTO
         public Nullable<int> supplyU { get; set; }
         public string Picture { get; set; }
 
+        public Nullable<bool> isDone { get; set; }
 
 
 
