@@ -1,7 +1,10 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-  
+
 td{
-  width: 16.666%;
+width: 16.666%;
+}
+#plus{
+margin-left: 1250px;
 }

@@ -36,6 +36,7 @@ import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.compone
 import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -87,7 +88,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatIconModule,
    MatMenuModule,
-
+MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6XGmiIhsaoXzLTu611HLGNL74ZEWIaSE',
       libraries: ['places']

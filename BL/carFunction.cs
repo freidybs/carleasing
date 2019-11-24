@@ -25,6 +25,15 @@ namespace BL
                 return db.Cars.FirstOrDefault(p => p.carNum == car.carNum).carId;
             }
         }
+        public static CarDTO getCar(int carId)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                var c = db.Cars.FirstOrDefault(cr => cr.carId == carId);
+                return Casting.CarCasting.castToDTO(c);
+            }
+        }
+
         public static void deleteCar(int carId)
         {
             using(carLeasingEntities db=new carLeasingEntities())

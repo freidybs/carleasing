@@ -59,6 +59,7 @@
           <Property Name="carLocationy" Type="float" />
           <Property Name="supplyU" Type="int" />
           <Property Name="isDone" Type="bit" />
+          <Property Name="price" Type="float" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -81,6 +82,7 @@
           <Property Name="beginHour" Type="time" Precision="7" />
           <Property Name="endDate" Type="datetime" />
           <Property Name="endHour" Type="time" Precision="7" />
+          <Property Name="price" Type="float" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -285,6 +287,7 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <NavigationProperty Name="Transactions" Relationship="Self.fk_4" FromRole="Supply" ToRole="Transaction" />
           <NavigationProperty Name="User" Relationship="Self.FK_Supply_Users" FromRole="Supply" ToRole="Users" />
           <Property Name="isDone" Type="Boolean" />
+          <Property Name="price" Type="Double" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -309,6 +312,7 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <Property Name="endHour" Type="Time" Precision="7" />
           <NavigationProperty Name="Demand" Relationship="Self.fk_3" FromRole="Transaction" ToRole="Demand" />
           <NavigationProperty Name="Supply" Relationship="Self.fk_4" FromRole="Transaction" ToRole="Supply" />
+          <Property Name="price" Type="Double" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -500,6 +504,7 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <EntitySetMapping Name="Supplies">
             <EntityTypeMapping TypeName="carLeasingModel.Supply">
               <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="isDone" ColumnName="isDone" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />
                 <ScalarProperty Name="carNum" ColumnName="carNum" />
@@ -527,6 +532,7 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="carLeasingModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="transactionId" ColumnName="transactionId" />
                 <ScalarProperty Name="demandId" ColumnName="demandId" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />

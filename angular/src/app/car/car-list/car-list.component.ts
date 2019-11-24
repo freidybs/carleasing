@@ -63,7 +63,11 @@ delete(id:number)
 }
 edit(car:Car)
 {
- return this.router.navigate(['car-details']);
+  return this.router.navigate(['car']);
  
 }
+car()
+    {
+      this.router.navigate(['car']);
+    }  
 }

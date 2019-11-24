@@ -14,7 +14,8 @@ export class Car {
         expiryDate:Date;
         /*  file: */
         owner:number;
-        
+        price:number;
+
 
         
         

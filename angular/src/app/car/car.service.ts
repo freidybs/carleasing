@@ -37,4 +37,8 @@ baseroute:string="http://localhost:58516/api/";
   {
     return this.http.post(this.baseroute+"Car/update",car);
   }
+  // getCar(carId:number)
+  // {
+  //   return this.http.get(this.baseroute+"Car/getCar",carId);
+  // }
 }

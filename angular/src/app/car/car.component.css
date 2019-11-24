@@ -1,11 +1,249 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width:50%;
+  min-width: 150px;
+  max-width: 500px;
+  width:50%;
+}
+
+.example-full-width {
+  width: 50%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width:50%;
+}
+
+.example-full-width {
+  width: 50%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  height: 100vh;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+agm-map { height: 300px; /* height is required */ }
+.example-cover-container {
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+margin-left: 20%;
+margin-right: 20%;
+}
+agm-map { height: 300px; /* height is required */ }
+.example-cover-container {
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+  margin-left: 20%;
+  margin-right: 20%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 300vh;
   }
   
-  .example-full-width {
-    width: 50%;
+  #login .container #login-row #login-column #login-box {
+    /* margin-top: 120px; */
+    max-width: 600px;
+    border: 1px solid #9C9C9C;
+    background-color:rgb(219, 214, 214);	
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+ .form-group{
+   text-align: right;
+   
+ }
+ div .text-info {color:rgb(230, 89, 8)!important;}
+  div input{
+   border:yellow !important;
+   text-align: right;
+ }
+ /*************************
+        button
+*************************/
+.wrapper {
+  text-align: center;
+}
+
+div span{
+  font-size: 100px;;
+}
+ 
+
+.button {
+  font-size: 14px;
+  text-align: center;
+  border: 0px solid transparent;
+  background: rgb(230, 89, 8);
+  color: #ffffff;
+  display: inline-block;
+  text-transform: capitalize;
+  vertical-align: middle;
+  padding: 8px 20px;
+  -ms-transform: perspective(1px) translateZ(0);
+  -o-transform: perspective(1px) translateZ(0);
+  -moz-transform: perspective(1px) translateZ(0);
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  -ms-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -ms-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #323232;
+  -ms-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -o-transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -ms-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -ms-transition-property: transform;
+  -moz-transition-property: transform;
+  -o-transition-property: transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -ms-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.button:hover,
+.button:focus,
+.button:active {
+  color: #ffffff;
+}
+
+.button:hover:before,
+.button:focus:before,
+.button:active:before {
+  -moz-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -moz-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
+  -ms-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
+  -o-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.50);
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.mat-error{
+  color:black;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  color:black;}
+
+
+  body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}
+
+  .form-heading { color:#fff; font-size:23px;}
+  .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+  .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+  .login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .main-div {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
   }
   
+  .login-form .form-group {
+    margin-bottom:10px;
+  }
+  .login-form{ text-align:center;}
+  .forgot a {
+    color: #777777;
+    font-size: 14px;
+    text-decoration: underline;
+    display: inline;
+  }
+  .login-form  .btn.btn-primary {
+    background: #f0ad4e none repeat scroll 0 0;
+    border-color: #f0ad4e;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+  }
+  .forgot {
+    text-align: left; margin-bottom:30px;
+  }
+  .botto-text {
+    color: #ffffff;
+    font-size: 14px;
+    margin: auto;
+  }
+  .login-form .btn.btn-primary.reset {
+    background: #ff9900 none repeat scroll 0 0;
+  }
+  .back { text-align: left; margin-top:10px;}
+  .back a {color: #444444; font-size: 13px;text-decoration: none;}
   
