@@ -1,0 +1,42 @@
+
+<table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+        
+  <ng-container matColumnDef="toHour">
+    <th mat-header-cell *matHeaderCellDef> עד שעה  </th>
+    <td mat-cell *matCellDef="let element"> {{element.DemandDTO.toHour}} <!-- <i class="material-icons">edit</i>
+      <i class="material-icons">delete_forever</i> --></td>
+  </ng-container>
+  <ng-container matColumnDef="fromHour">
+    <th mat-header-cell *matHeaderCellDef> משעה </th>
+    <td mat-cell *matCellDef="let element"> {{element.DemandDTO.fromHour}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="toDate">
+    <th mat-header-cell *matHeaderCellDef> עד תאריך </th>
+    <td mat-cell *matCellDef="let element"> {{element.DemandDTO.toDate}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="fromDate">
+    <th mat-header-cell *matHeaderCellDef> מתאריך </th>
+    <td mat-cell *matCellDef="let element"> {{element.DemandDTO.fromDate}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="carNum">
+    <th mat-header-cell *matHeaderCellDef> מס רכב </th>
+    <td mat-cell *matCellDef="let element">{{element.SupplyDTO.carNum}}  </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef>מחיר  </th>
+    <td mat-cell *matCellDef="let element">{{element.SupplyDTO.carNum}}  </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

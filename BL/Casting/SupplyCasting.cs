@@ -24,7 +24,7 @@ namespace BL.Casting
                 toDate = supplyDAL.toDate,
                 toHour = supplyDAL.toHour,
                 carNum = supplyDAL.carNum,
-              
+                Picture= supplyDAL.User!=null?supplyDAL.User.picture:""
 
             };
             
@@ -42,16 +42,12 @@ namespace BL.Casting
                     fromDate = supplyDTO.fromDate,
                     fromHour = supplyDTO.fromHour,
                     toDate = supplyDTO.toDate,
-                   supplyU=supplyDTO.supplyU,
+                    supplyU=supplyDTO.supplyU,
                     toHour = supplyDTO.toHour,
                     Transactions = db.Transactions.Where(p => p.supplyId == supplyDTO.supplyId).ToList(),
-                    
+                    User = db.Users.FirstOrDefault(p => p.userId == supplyDTO.supplyU)
                 };
-
-
-
             }
-           
         }
         public static List<SupplyDTO> castListToDTO(List<Supply>supplyList)
         {

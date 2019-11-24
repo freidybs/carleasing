@@ -17,6 +17,7 @@ import { SupplyListComponent } from './supply/supply-list/supply-list.component'
 import { MapsComponent } from './maps/maps.component';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component';
+import {TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path:'add-demand',component:DemandDetailsComponent},
   {path:'supply',component:SupplyComponent},
   {path:'demand-list',component:DemandListComponent},
- {path:'demand-details',component:DemandDetailsComponent},
+  {path:'demand-details',component:DemandDetailsComponent},
   {path:'car',component:CarComponent},
   {path:'car-list',component:CarListComponent},
   {path:'user-details',component:UserDetailsComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path:'user-profile',component:UserProfileComponent},
   {path:'demand-ulist',component:DemandUListComponent},
   {path:'supply-ulist',component:SupplyUListComponent},
- 
+  {path:'transaction-ulist',component:TransactionUListComponent},
+
   { path: 'maps', component: MapsComponent },
   { path: '', component: LoginComponent }
 

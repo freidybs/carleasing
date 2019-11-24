@@ -25,7 +25,17 @@ baseRoute:string="http://localhost:58516/api/";
   }
   GetFilterList(demand:Demand)
   {
+    
     return this.http.post(this.baseRoute+"Supply/get-filter-list",demand,this.globalService.httpOptions);
+  }
+  saveDeamnd(demand:Demand){
+    
+    return this.http.post(this.baseRoute+"Supply/saveDeamnd",demand,this.globalService.httpOptions);
+
+  }
+  creatTransaction(supplyId,demanedId){
+    return this.http.get(this.baseRoute+"Transaction/creatTransaction/"+supplyId+'/'+demanedId);
+
   }
   userSupplies() {
     return this.http.get(this.baseRoute+"Supply/userSupplies",this.globalService.httpOptions);

@@ -44,7 +44,7 @@ agm-map { height: 300px; /* height is required */ }
   body {
     margin: 0;
     padding: 0;
-    height: 300vh;
+    /* height: 300vh; */
   }
   
   #login .container #login-row #login-column #login-box {

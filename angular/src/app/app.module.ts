@@ -35,6 +35,7 @@ import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.compone
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
 import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component'; 
 
 
 
@@ -60,12 +61,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SupplySearchComponent,
     DemandUListComponent,
     SupplyUListComponent,
-      AppPassworddDirective
-  
-    
-
-    
- ],
+    AppPassworddDirective,
+    TransactionUListComponent,
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,

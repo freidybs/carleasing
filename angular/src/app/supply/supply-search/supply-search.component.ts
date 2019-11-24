@@ -29,7 +29,6 @@ export class SupplySearchComponent implements OnInit {
     this.supplySearch.fromDate.setHours(10);
     this.supplySearch.toDate.setHours(10);
     this.supplySearch.fromDate.getDate();
-
     this.Search.emit(this.supplySearch);
     
     
