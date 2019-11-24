@@ -22,7 +22,7 @@ namespace BL.Casting
                 Locationy = demandDAL.Locationy,
                 toDate = demandDAL.toDate,
                 toHour = demandDAL.toHour,
-
+                Picture = demandDAL.User != null ? demandDAL.User.picture : ""
             };
 
 
@@ -43,7 +43,7 @@ namespace BL.Casting
                     toDate = demandDTO.toDate,
                     toHour = demandDTO.toHour,
                     Transactions = db.Transactions.Where(p => p.demandId == demandDTO.demanedId).ToList(),
-                    //User = db.Users.FirstOrDefault(p => p.userId == demandDTO.interestedId)
+                    User = db.Users.FirstOrDefault(p => p.userId == demandDTO.interestedId)
 
 
                 };

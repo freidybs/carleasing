@@ -34,6 +34,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
+import { TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component'; 
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.compone
     SupplySearchComponent,
     DemandUListComponent,
     SupplyUListComponent,
+    TransactionUListComponent
     
   
   ],

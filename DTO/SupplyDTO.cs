@@ -18,7 +18,7 @@ namespace DTO
         public Nullable<double> carLocationy { get; set; }
         public Nullable<bool> insuranceDemand { get; set; }
         public Nullable<int> supplyU { get; set; }
-
+        public string Picture { get; set; }
 
 
 

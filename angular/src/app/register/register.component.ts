@@ -48,14 +48,13 @@ addImage(event) {
 saveImg(id:number){
   let image1: FormData = new FormData();
 
-  if (this.fileList.length > 0) {
+  if (this.fileList && this.fileList.length > 0) {
     for (let i = 0; i < this.fileList.length; i++) {
       this.newFile = this.fileList[i];
       image1.append(i.toString(), this.newFile, this.newFile.name);
     }
     this.registerService.uploadPhotos(image1, id).subscribe((res) => {
-      localStorage.setItem('userImage',res.toString());
-      debugger
+      
      })
   }
 }

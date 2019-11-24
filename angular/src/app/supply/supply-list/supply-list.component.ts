@@ -13,6 +13,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class SupplyListComponent implements OnInit {
   @Input() data;
+  @Input() saveDemand;
  supplyList: Array<Suplly>;
   demand = new Demand();
   supply: Suplly = new Suplly();
@@ -23,6 +24,7 @@ export class SupplyListComponent implements OnInit {
   //   this.supplyList=this.data;
   // }
   ngOnInit() {
+    
     // this.aRouter.params.subscribe(
     //   (p: Demand) => {
     //     console.log(p);
@@ -78,6 +80,11 @@ if(!this.data)
 }
 
 
+creatTransaction(supplyId){
+  this.supplyService.creatTransaction(supplyId, this.saveDemand.demanedId).subscribe(res=>{
+    debugger
+  })
 
+}
 
 }

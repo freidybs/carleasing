@@ -41,14 +41,20 @@ namespace BL.Casting
                 };
             }
         }
-                    
-                    
-                    
-                    
-                    
-            
 
-            
-        
+
+
+
+        public static List<TransactionDTO> castListToDTO(List<Transaction> transactionList)
+        {
+            List<TransactionDTO> newList = new List<TransactionDTO>();
+            transactionList.ForEach(p => newList.Add(castToDTO(p)));
+            return newList;
+
+        }
+
+
+
+
     }
 }

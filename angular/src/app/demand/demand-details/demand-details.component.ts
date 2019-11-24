@@ -30,6 +30,7 @@ selectedMarker;
 locations:Array<Suplly>;
 supply: Suplly = new Suplly();
 supplyList: Array<Suplly>;
+savedemand:Demand;
   constructor(private demandServic: DemandService, private router: Router,private supplyService:SupplyService) { }
   ngOnInit() {
     this.zoom = 10;
@@ -101,10 +102,18 @@ GetFilterList()
   this.router.navigate(['supply-list/',this.demand]);
 }
 searchSupply(details) {
+    this.supplyService.saveDeamnd(details).subscribe(
+      (res:Demand) => {
+        this.savedemand = res;
+   this.GetList(details)
+      });
+}
+GetList(details){
   this.supplyService.GetFilterList(details).subscribe(
     (res: Array<Suplly>) => {
       this.supplyList = res;
     });
 }
+
 
 }
