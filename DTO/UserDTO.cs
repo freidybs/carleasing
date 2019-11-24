@@ -16,7 +16,9 @@ namespace DTO
         public string password { get; set; }
         public string picture { get; set; }
         public int insuranceType { get; set; }
-        
-        
+
+      //  public bool insuranceType { get; set; }
+
+
     }
 }

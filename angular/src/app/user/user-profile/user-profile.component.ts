@@ -30,4 +30,9 @@ mySupplies()
 {
   return this.router.navigate(['supply-ulist']);
 }
+
+myTransactions()
+{
+  return this.router.navigate(['transaction-ulist']);
+}
 }

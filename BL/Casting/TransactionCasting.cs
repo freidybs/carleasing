@@ -19,7 +19,11 @@ namespace BL.Casting
                 beginHour = transactionDAL.beginHour,
                 endDate = transactionDAL.endDate,
                 endHour = transactionDAL.endHour,
-                demandId = transactionDAL.demandId
+                demandId = transactionDAL.demandId,
+                DemandDTO = transactionDAL.Demand != null ? Casting.DemandCasting.castToDTO(transactionDAL.Demand) : null,
+                SupplyDTO = transactionDAL.Supply != null ? Casting.SupplyCasting.CastToDTO(transactionDAL.Supply):null,
+
+
             };
         }
 
@@ -41,14 +45,20 @@ namespace BL.Casting
                 };
             }
         }
-                    
-                    
-                    
-                    
-                    
-            
 
-            
-        
+
+
+
+        public static List<TransactionDTO> castListToDTO(List<Transaction> transactionList)
+        {
+            List<TransactionDTO> newList = new List<TransactionDTO>();
+            transactionList.ForEach(p => newList.Add(castToDTO(p)));
+            return newList;
+
+        }
+
+
+
+
     }
 }

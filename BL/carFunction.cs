@@ -44,15 +44,15 @@ namespace BL
             }
         }
 
-        public static List<CarDTO> allCars()
+        public static List<CarDTO> AllCars()
         {
             using (carLeasingEntities db = new carLeasingEntities())
-           {
+            {
                 return Casting.CarCasting.castListToDTO(db.Cars.ToList());
-               }
+            }
         }
 
-       
+
 
         public static List<CarDTO> carList(int id)
         {

@@ -10,13 +10,15 @@ namespace BL
 {
    public  class DemandsFunction
     {
-        public static void newDemand(DemandDTO demand)
+        public static DemandDTO newDemand(DemandDTO demand)
         {using (carLeasingEntities db = new carLeasingEntities())
             {
                 Demand d = Casting.DemandCasting.castToDAL(demand);
-                db.Demands.Add(d);
+                var dd= db.Demands.Add(d);
                 db.SaveChanges();
+                return Casting.DemandCasting.castToDTO(dd);
             }
+
         }
         public static void deleteDemand(int demandId)
         {
