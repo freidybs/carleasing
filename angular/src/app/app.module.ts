@@ -35,6 +35,8 @@ import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.compone
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
 import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { StatisComponent } from './statis/statis.component';
 import { TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component'; 
 
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -63,8 +65,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     DemandUListComponent,
     SupplyUListComponent,
     AppPassworddDirective,
-    TransactionUListComponent,
-  ],
+      TransactionUListComponent,
+      StatisComponent,
+
+
+  
+    
+
+    
+ ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -86,6 +95,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDialogModule,
     MatIconModule,
    MatMenuModule,
+   MatToolbarModule,
 MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxG3TDFOXmRB5XpG9Yfh40VCs5Aqr93jo',

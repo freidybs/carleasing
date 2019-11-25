@@ -1,0 +1,17 @@
+
+div{
+    background-color: #F57F20;
+    width: 24%;
+    height: 29.2455%;
+    position: absolute; 
+    margin-left: 25.333%; 
+}
+#user{
+  margin-left: 0%;  
+}
+#supply{
+margin-left: 50.666%;
+}
+#demand{
+    margin-left: 75.999%;
+}

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { CarDetailsComponent } from '../car-details/car-details.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -49,17 +49,33 @@ export class CarListComponent implements OnInit {
 }
 delete(id:number)
 {
-  this.carService.delete(id).subscribe(
-    (res)=>
-    {
-      this.dataSource=this.dataSource.filter(item=>item.carId!=id);
-      alert("ok");
-    },
-    (err)=>
-    {
-      alert("err");
+  Swal.fire({
+    title: 'את/ה בטוח/ה?',
+    text: "את/ה מוחק/ת רכב!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText:'ביטול',
+    confirmButtonText: 'כן, מחק!'
+  }).then((result) => {
+    if (result.value) {
+      this.carService.delete(id).subscribe(
+      (res)=>
+      {
+          this.dataSource=this.dataSource.filter(item=>item.carId!=id);
+      Swal.fire(
+        'נמחק!',
+        '!הרכב נמחק בהצלחה.',
+        'success'
+      )
+      },
+      (err)=>
+      {
+        alert("err");
+      });
     }
-  );
+  });
 }
 edit(id)
 {
