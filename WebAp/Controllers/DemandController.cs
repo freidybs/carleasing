@@ -60,9 +60,14 @@ namespace WebAp.Controllers
             
             DemandsFunction.deleteDemand(id);
         }
-        
 
-       
+        [HttpGet]
+        [Route("getDemand/{id}")]
+        public DemandDTO GetDemand([FromUri] int id)
+        {
+            return DemandsFunction.GetDemand(id);
+        }
+
 
 
     }

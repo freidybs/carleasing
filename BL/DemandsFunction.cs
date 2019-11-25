@@ -73,5 +73,12 @@ namespace BL
             }
         }
 
+        public static DemandDTO GetDemand(int id)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                return Casting.DemandCasting.castToDTO(db.Demands.FirstOrDefault(s => s.demanedId == id));
+            }
+        }
     }
 }

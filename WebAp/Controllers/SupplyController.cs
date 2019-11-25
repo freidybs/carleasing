@@ -73,7 +73,13 @@ namespace WebAp.Controllers
              var id = Helper.getCurrentUserId(Request.GetRequestContext());
            return SupplyFunction.showSupplies(id);
         }
-     
+
+        [HttpGet]
+        [Route("getSupply/{id}")]
+        public SupplyDTO GetSupply([FromUri] int id)
+        {
+            return SupplyFunction.GetSupply(id);
+        }
 
     }
 }

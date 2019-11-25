@@ -92,6 +92,14 @@ namespace BL
 
         }
 
+        public static SupplyDTO GetSupply(int id)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                return Casting.SupplyCasting.CastToDTO(db.Supplies.FirstOrDefault(s => s.supplyId == id));
+            }
+        }
+
         public static void deleteSupplyByCar(int id)
         {
             using (carLeasingEntities db = new carLeasingEntities())

@@ -22,6 +22,10 @@ baseRoute:string="http://localhost:58516/api/"
    return  this.http.delete(this.baseRoute+"Demand/"+demandId);
    
  }
+ getDemand(id){
+  return  this.http.get(this.baseRoute+"Demand/getDemand/"+id);
+
+ }
  lookForSuggest(demand:Demand)
    {
      return this.http.post(this.baseRoute+"Demand/look-for-suggest",demand);

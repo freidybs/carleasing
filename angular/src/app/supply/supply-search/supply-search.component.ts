@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Demand } from 'src/app/model/demand';
 import { Location, Appearance } from '@angular-material-extensions/google-maps-autocomplete';
 import PlaceResult = google.maps.places.PlaceResult;
@@ -10,7 +10,7 @@ import { DemandService } from 'src/app/demand/demand.service';
 })
 export class SupplySearchComponent implements OnInit {
 
-  supplySearch: Demand = new Demand();
+  @Input() supplySearch: Demand = new Demand();
   @Output() Search: EventEmitter<any> = new EventEmitter<any>();
   constructor(private damandService:DemandService) { }
 

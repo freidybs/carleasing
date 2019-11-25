@@ -37,9 +37,9 @@ delete(id:number)
     }
   );
 }
-supplyDetails(supply:Suplly)
+supplyDetails(id)
 {
- return this.router.navigate(['supply-details']);
+ return this.router.navigate(['supply-details'], { queryParams: { id: id }});
  
 }
 

@@ -27,9 +27,9 @@ supplyList:Array<Suplly>;
  );
 }
 
-  demandDetails()
+  demandDetails(id)
     {
-      return this.router.navigate(['demand-details']);
+      return this.router.navigate(['demand-details'], { queryParams: { id: id }});
     }
     
 }

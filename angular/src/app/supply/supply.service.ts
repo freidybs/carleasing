@@ -15,7 +15,10 @@ baseRoute:string="http://localhost:58516/api/";
   saveSupply(supply:Suplly){
      return  this.http.post(this.baseRoute+"Supply?subItem=newSupply",supply,this.globalService.httpOptions);
    }
- 
+   getSupply(id){
+    return  this.http.get(this.baseRoute+"Supply/getSupply/"+id);
+
+   }
   GetAllSupply()
   {
     return this.http.get(this.baseRoute+"Supply/get-list");

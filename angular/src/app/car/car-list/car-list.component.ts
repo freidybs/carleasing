@@ -61,10 +61,9 @@ delete(id:number)
     }
   );
 }
-edit(car:Car)
+edit(id)
 {
-  return this.router.navigate(['car']);
- 
+  return this.router.navigate(['car-details'], { queryParams: { id: id }});
 }
 car()
     {

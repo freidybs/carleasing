@@ -15,9 +15,10 @@ import { User } from 'src/app/model/user';
 
 export class CarDetailsComponent implements OnInit {
   id: number;
-   car: Car=new Car();
+  car: Car=new Car();
   user:User=new User();
   files;
+  carId;
   constructor(private route: ActivatedRoute, private carService: CarService) { }
 
   ngOnInit() {
@@ -25,10 +26,17 @@ export class CarDetailsComponent implements OnInit {
     this.user.email=id;
     this.car.owner=this.user.userId;
     console.log(this.car);
-
+    this.route.queryParams
+    .subscribe(params => {
+      this.carId = params['id'] ;
+      if(this.carId)
+      this.getCar(this.carId);
+    });
   }
 
- 
-  
+  getCar(id){
+    this.carService.getCar(id).subscribe((res:Car)=>{
+      this.car=res;
+    })}
 
 }

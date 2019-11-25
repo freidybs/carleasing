@@ -80,5 +80,13 @@ namespace BL
                 db.SaveChanges();
             }
         }
+
+        public static CarDTO GetCar(int id)
+        {
+           using (carLeasingEntities db = new carLeasingEntities())
+           {
+               return Casting.CarCasting.castToDTO(db.Cars.FirstOrDefault(s => s.carId == id));
+           }
+        }
     }
 }

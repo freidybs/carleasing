@@ -92,6 +92,13 @@ namespace WebAp.Controllers
         {
             carFunction.edit(car);
         }
+
+        [HttpGet]
+        [Route("getCar/{id}")]
+        public CarDTO GetCar([FromUri] int id)
+        {
+            return carFunction.GetCar(id);
+        }
     }
 }
 
