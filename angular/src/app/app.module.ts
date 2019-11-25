@@ -88,7 +88,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
    MatMenuModule,
 MatTooltipModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB6XGmiIhsaoXzLTu611HLGNL74ZEWIaSE',
+      apiKey: 'AIzaSyDxG3TDFOXmRB5XpG9Yfh40VCs5Aqr93jo',
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule,
