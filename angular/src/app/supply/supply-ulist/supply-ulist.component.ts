@@ -36,27 +36,25 @@ delete(id:number)
     cancelButtonText:'ביטול',
     confirmButtonText: 'כן, מחק!'
   }).then((result) => {
-    if (result.value) {
-      this.supplyService.delete(id).subscribe(
-      (res)=>
-      {
-          this.dataSource=this.dataSource.filter(item=>item.supplyId!=id);
-      Swal.fire(
-        'נמחק!',
-        '!ההצעה נמחקה בהצלחה.',
-        'success'
-      )
-      },
-      (err)=>
-      {
-        alert("err");
-      });
-    }
-  });
-} 
-supplyDetails(supply:Suplly)
+      if (result.value) {
+          this.supplyService.delete(id).subscribe(
+              (res) => {
+                  this.dataSource = this.dataSource.filter(item => item.supplyId != id);
+                  Swal.fire(
+                      'נמחק!',
+                      '!ההצעה נמחקה בהצלחה.',
+                      'success'
+                  )
+              },
+              (err) => {
+                  alert("err");
+              });
+      }
+  } );
+}
+supplyDetails(id)
 {
- return this.router.navigate(['supply-details']);
+ return this.router.navigate(['supply-details'], { queryParams: { id: id }});
  
 }
 

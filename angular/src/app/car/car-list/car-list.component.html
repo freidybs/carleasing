@@ -1,3 +1,6 @@
+<div  id="plus" matTooltip="רכב חדש" (click)="car()">
+  <i style="font-size: 3em" class="pi pi-plus-circle"></i>
+</div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -11,7 +14,7 @@
             <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef>  </th>
                 <td mat-cell *matCellDef="let element">
-                 <mat-icon (click)="edit(this.element)">edit</mat-icon>   </td>
+                 <mat-icon (click)="edit(element.carId)">edit</mat-icon>   </td>
               </ng-container>
     <ng-container matColumnDef="numSeats">
       <th mat-header-cell *matHeaderCellDef> מס מקומות </th>

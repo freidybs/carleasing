@@ -1,62 +1,67 @@
+<head> 
 
-<form>
-  <div class="line">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="carNum" name="carNum" [(ngModel)]="car.carNum">
-      </mat-form-field>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <h1 class="form-heading">login Form</h1>
+    <div class="login-form">
+    <div class="main-div">
+        <div class="panel">
+        <h2> הוספת רכב</h2>
+        <p>בבקשה הזן את פרטי הרכב   </p>
+        </div>
+  <div class="form-group">
+     
+        <input class="form-control" matInput placeholder="מספר רכב" name="carNum" [(ngModel)]="car.carNum">
+        
   </div>
-  <div class="line">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="carCompany" name="carCompany" [(ngModel)]="car.carCompany">
-      </mat-form-field>
+  <div class="form-group">
+     
+        <input class="form-control" matInput placeholder="חברה" name="carCompany" [(ngModel)]="car.carCompany">
+        
   </div>
-  <div class="line">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="model" name="model" [(ngModel)]="car.model">
-      </mat-form-field>
+  <div class="form-group">
+     
+        <input class="form-control" matInput placeholder="דגם" name="model" [(ngModel)]="car.model">
+        
   </div>
-  <div class="line">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="numSeats" name="numSeats" [(ngModel)]="car.numSeats">
-      </mat-form-field>
+  <div class="form-group">
+     
+        <input class="form-control" matInput placeholder="מספר מקומות" name="numSeats" [(ngModel)]="car.numSeats">
+        
   </div>
-  <div class="line">
-      <mat-checkbox name="trunc" [(ngModel)]="car.trunc">trunc!</mat-checkbox>
-    <!-- <mat-form-field class="example-full-width">
-        <input matInput placeholder="trunc" name="trunc" [(ngModel)]="car.trunc">
-      </mat-form-field> -->
+ 
+  <div class="form-group">
+     
+        <input matInput class="form-control"placeholder="תיאור קצר" name="description" [(ngModel)]="car.description">
+        
   </div>
-  <div class="line">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="description" name="description" [(ngModel)]="car.description">
-      </mat-form-field>
-  </div>
-  <div class="line">
-      <!-- <input hidden type="file" multiple #imgFileInput (change)="addImage ($event)" /> -->
-      <button type="button" name="image" class="btnRegister" md-button (click)="imgFileInput.click()">הוסף תמונה</button> 
+  <div class="form-group">
+      <input hidden type="file" multiple #imgFileInput (change)="addImage ($event)" />
+      <button type="button" name="image" class="btnRegister " md-button (click)="imgFileInput.click()">הוסף תמונה</button> 
       <!-- <input type="file" name="picture" value="בחר קובץ" [(ngModel)]="car.picture"> -->
   </div>
-  <div class="line">
+  <div class="form-group">
   <mat-label>insuranceType</mat-label>
-    <mat-select [(ngModel)]="car.insuranceType" >
-      <!-- <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
+    <mat-select  [(ngModel)]="car.insuranceType" >
+      <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
         {{i.insuranceName}}
-      </mat-option> -->
+      </mat-option>
     </mat-select>
   </div>
-  <div class="line">
-   <!--  <mat-form-field class="example-full-width">
+  <div class="form-group">
+   <!--   
         <input matInput placeholder="expiryDate" name="expiryDate" [(ngModel)]="car.expiryDate">
-      </mat-form-field> -->
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="car.expiryDate">
+         -->
+        
+        <input class="form-control"  [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="car.expiryDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+        
   </div>
-  <div class="line">
-    <input type="file" name="file" value="בחר קובץ" [(ngModel)]="car.file">
+  <div class="form-group">
+    <input type="file" name="file" class="form-control" value="בחר קובץ" [(ngModel)]="car.file">
   </div>
-    <button (click)="onNoClick()">ok</button>
+  <button type="submit" class="btn btn-primary"(click)="saveCar()">שמור</button>
 
-</form>

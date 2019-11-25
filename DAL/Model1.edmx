@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="carId" />
@@ -36,6 +36,7 @@
           <Property Name="interestedId" Type="int" />
           <Property Name="numSeats" Type="int" />
           <Property Name="carCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDone" Type="bit" />
         </EntityType>
         <EntityType Name="Insurance">
           <Key>
@@ -55,8 +56,10 @@
           <Property Name="toDate" Type="datetime" />
           <Property Name="toHour" Type="time" Precision="7" />
           <Property Name="carLocationx" Type="float" />
-          <Property Name="supplyU" Type="int" />
           <Property Name="carLocationy" Type="float" />
+          <Property Name="supplyU" Type="int" />
+          <Property Name="isDone" Type="bit" />
+          <Property Name="price" Type="float" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -79,6 +82,7 @@
           <Property Name="beginHour" Type="time" Precision="7" />
           <Property Name="endDate" Type="datetime" />
           <Property Name="endHour" Type="time" Precision="7" />
+          <Property Name="price" Type="float" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -153,6 +157,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Supply_Car" />-->
         <Association Name="FK_Supply_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
@@ -214,8 +221,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="carLeasingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -254,6 +260,7 @@
           <Property Name="carCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Transactions" Relationship="Self.fk_3" FromRole="Demand" ToRole="Transaction" />
           <NavigationProperty Name="User" Relationship="Self.FK_Demand_Users" FromRole="Demand" ToRole="Users" />
+          <Property Name="isDone" Type="Boolean" />
         </EntityType>
         <EntityType Name="Insurance">
           <Key>
@@ -279,6 +286,8 @@
           <Property Name="carLocationy" Type="Double" />
           <NavigationProperty Name="Transactions" Relationship="Self.fk_4" FromRole="Supply" ToRole="Transaction" />
           <NavigationProperty Name="User" Relationship="Self.FK_Supply_Users" FromRole="Supply" ToRole="Users" />
+          <Property Name="isDone" Type="Boolean" />
+          <Property Name="price" Type="Double" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -303,6 +312,7 @@
           <Property Name="endHour" Type="Time" Precision="7" />
           <NavigationProperty Name="Demand" Relationship="Self.fk_3" FromRole="Transaction" ToRole="Demand" />
           <NavigationProperty Name="Supply" Relationship="Self.fk_4" FromRole="Transaction" ToRole="Supply" />
+          <Property Name="price" Type="Double" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -469,6 +479,7 @@
           <EntitySetMapping Name="Demands">
             <EntityTypeMapping TypeName="carLeasingModel.Demand">
               <MappingFragment StoreEntitySet="Demand">
+                <ScalarProperty Name="isDone" ColumnName="isDone" />
                 <ScalarProperty Name="demanedId" ColumnName="demanedId" />
                 <ScalarProperty Name="fromDate" ColumnName="fromDate" />
                 <ScalarProperty Name="fromHour" ColumnName="fromHour" />
@@ -493,6 +504,8 @@
           <EntitySetMapping Name="Supplies">
             <EntityTypeMapping TypeName="carLeasingModel.Supply">
               <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="isDone" ColumnName="isDone" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />
                 <ScalarProperty Name="carNum" ColumnName="carNum" />
                 <ScalarProperty Name="fromDate" ColumnName="fromDate" />
@@ -519,6 +532,7 @@
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="carLeasingModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="transactionId" ColumnName="transactionId" />
                 <ScalarProperty Name="demandId" ColumnName="demandId" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />

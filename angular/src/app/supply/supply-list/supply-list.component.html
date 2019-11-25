@@ -2,18 +2,17 @@
   <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
 <mat-card id="supplyList"class="example-card" *ngFor="let supply of supplyList">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar class="example-header-image"  [style.background]="'url(' + supply.Picture + ')'"></div>
    <mat-card-title>מרחק של:</mat-card-title>
-    
   </mat-card-header>
  
-  <mat-card-content *ngIf="car">
+  <mat-card-content >
       <mat-card-subtitle>
           <label>מהתאריך:</label>
-          {{supply.fromDate}}
+          {{supply.fromDate| date:"dd/MM/yyyy"}}
             </mat-card-subtitle>
         <mat-card-subtitle><label>עד התאריך:</label>
-          {{supply.toDate}}
+          {{supply.toDate| date:"dd/MM/yyyy"}}
             </mat-card-subtitle>
             <mat-card-subtitle> <label>מהשעה:</label>
               {{supply.fromHour}}    
@@ -28,7 +27,7 @@
       {{getCar(supply.carNum).description}}</p>
     {{supply.carNum}}
     <mat-card-actions>
-      <button class="button">מתאים לי</button> 
+      <button class="button" (click)="creatTransaction(supply.supplyId)">מתאים לי</button> 
     </mat-card-actions>
   </mat-card-content>
 

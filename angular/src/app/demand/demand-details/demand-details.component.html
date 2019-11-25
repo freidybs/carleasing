@@ -1,4 +1,4 @@
 
-<app-supply-search (Search)="searchSupply($event)"></app-supply-search> 
-<app-supply-list *ngIf="supplyList" [data]="supplyList"></app-supply-list>
+<app-supply-search (Search)="searchSupply($event)" [supplySearch]="demand"></app-supply-search> 
+<app-supply-list *ngIf="supplyList" [data]="supplyList" [saveDemand]="savedemand"></app-supply-list>
 <app-maps *ngIf="supplyList" [data]="supplyList"></app-maps>

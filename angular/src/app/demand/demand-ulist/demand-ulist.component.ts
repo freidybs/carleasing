@@ -25,9 +25,9 @@ export class DemandUListComponent implements OnInit {
       });
       
   }
-  demandDetails()
+  demandDetails(id)
   {
-    return this.router.navigate(['demand-details']);
+    return this.router.navigate(['demand-details'], { queryParams: { id: id }});
   }
   delete(id:number)
     {

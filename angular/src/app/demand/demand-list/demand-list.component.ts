@@ -14,14 +14,12 @@ export class DemandListComponent implements OnInit {
 public demandList:Array<Demand>;
 demand:Demand=new Demand();
 supplyList:Array<Suplly>;
-image;
  
  
 
   constructor(private demandService:DemandService, private router:Router) { }
 
   ngOnInit() {
-  this.image=  localStorage.getItem('userImage');
  this.demandService.GetAllDemands().subscribe(
   (res:Array<Demand>)=>{
     this.demandList=res;
@@ -29,9 +27,9 @@ image;
  );
 }
 
-  demandDetails()
+  demandDetails(id)
     {
-      return this.router.navigate(['demand-details']);
+      return this.router.navigate(['demand-details'], { queryParams: { id: id }});
     }
     
 }

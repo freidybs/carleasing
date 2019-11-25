@@ -37,7 +37,9 @@ import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { StatisComponent } from './statis/statis.component';
+import { TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component'; 
 
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -62,8 +64,11 @@ import { StatisComponent } from './statis/statis.component';
     SupplySearchComponent,
     DemandUListComponent,
     SupplyUListComponent,
-      AppPassworddDirective,
-      StatisComponent
+    AppPassworddDirective,
+      TransactionUListComponent,
+      StatisComponent,
+
+
   
     
 
@@ -74,6 +79,7 @@ import { StatisComponent } from './statis/statis.component';
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -90,6 +96,7 @@ import { StatisComponent } from './statis/statis.component';
     MatIconModule,
    MatMenuModule,
    MatToolbarModule,
+MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxG3TDFOXmRB5XpG9Yfh40VCs5Aqr93jo',
       libraries: ['places']

@@ -77,9 +77,12 @@ delete(id:number)
     }
   });
 }
-edit(car:Car)
+edit(id)
 {
- return this.router.navigate(['car-details']);
- 
+  return this.router.navigate(['car-details'], { queryParams: { id: id }});
 }
+car()
+    {
+      this.router.navigate(['car']);
+    }  
 }

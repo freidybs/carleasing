@@ -2,7 +2,7 @@ import { Component, OnInit, Output,ViewEncapsulation } from '@angular/core';
 import { Demand } from '../../model/demand';
 import { DemandService } from '../demand.service';
 import { Car } from 'src/app/model/car';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 /* import { EventEmitter } from '@angular/core'; */
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import {Location, Appearance} from '@angular-material-extensions/google-maps-autocomplete';
@@ -30,12 +30,24 @@ selectedMarker;
 locations:Array<Suplly>;
 supply: Suplly = new Suplly();
 supplyList: Array<Suplly>;
-  constructor(private demandServic: DemandService, private router: Router,private supplyService:SupplyService) { }
+savedemand:Demand;
+id;
+
+  constructor(private demandServic: DemandService, private router: Router,private supplyService:SupplyService , private route: ActivatedRoute) { }
   ngOnInit() {
     this.zoom = 10;
     this.latitude = 52.520008;
     this.longitude = 13.404954;
     this.setCurrentPosition();
+    
+    this.route.queryParams
+    .subscribe(params => {
+      this.id = params['id'] ;
+      if(this.id)
+      this.getDemand(this.id);
+    });
+ 
+
     // this.demandServic.getSuppliesLocation(this.demand).subscribe(
     //   (res:Array<Suplly>)=>
     //   {
@@ -72,7 +84,10 @@ supplyList: Array<Suplly>;
       });
     }
   }
- 
+  getDemand(id){
+    this.demandServic.getDemand(id).subscribe((res:Demand)=>{
+      this.demand=res;
+    })}
   onAutocompleteSelected(result: PlaceResult) {
     console.log('onAutocompleteSelected: ', result);
   }
@@ -101,10 +116,18 @@ GetFilterList()
   this.router.navigate(['supply-list/',this.demand]);
 }
 searchSupply(details) {
+    this.supplyService.saveDeamnd(details).subscribe(
+      (res:Demand) => {
+        this.savedemand = res;
+   this.GetList(details)
+      });
+}
+GetList(details){
   this.supplyService.GetFilterList(details).subscribe(
     (res: Array<Suplly>) => {
       this.supplyList = res;
     });
 }
+
 
 }

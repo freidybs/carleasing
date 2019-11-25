@@ -27,15 +27,22 @@ namespace WebAp.Controllers
         //{
         //    return SupplyFunction.getLocationSupplies();
         //}
-       [HttpPost]
+        [HttpPost]
         [Route("get-filter-list")]
         public List<SupplyDTO> getFilterList(DemandDTO demand)
         {
-            demand.interestedId = Helper.getCurrentUserId(Request.GetRequestContext());
-            DemandsFunction.newDemand(demand);
+            //demand.interestedId = Helper.getCurrentUserId(Request.GetRequestContext());
+            //DemandsFunction.newDemand(demand);
             return SupplyFunction.getFilterList(demand);
         }
-            
+        [HttpPost]
+        [Route("saveDeamnd")]
+        public DemandDTO SaveDeamnd(DemandDTO demand)
+        {
+            demand.interestedId = Helper.getCurrentUserId(Request.GetRequestContext());
+            return DemandsFunction.newDemand(demand);
+          
+        }
         [HttpPost]
         public void newSupply(string subItem,SupplyDTO Supply)
         {
@@ -67,6 +74,12 @@ namespace WebAp.Controllers
            return SupplyFunction.showSupplies(id);
         }
 
+        [HttpGet]
+        [Route("getSupply/{id}")]
+        public SupplyDTO GetSupply([FromUri] int id)
+        {
+            return SupplyFunction.GetSupply(id);
+        }
 
     }
 }

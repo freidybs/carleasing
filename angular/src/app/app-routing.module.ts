@@ -17,6 +17,7 @@ import { SupplyListComponent } from './supply/supply-list/supply-list.component'
 import { MapsComponent } from './maps/maps.component';
 import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.component';
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component';
+import {TransactionUListComponent } from './transaction/transaction-ulist/transaction-ulist.component';
 import { HomeComponent } from './home/home.component';
 import { StatisComponent } from './statis/statis.component';
 
@@ -39,8 +40,10 @@ const routes: Routes = [
   {path:'user-profile',component:UserProfileComponent},
   {path:'demand-ulist',component:DemandUListComponent},
   {path:'supply-ulist',component:SupplyUListComponent},
- {path:'home',component:HomeComponent},
+  {path:'transaction-ulist',component:TransactionUListComponent},
+
   { path: 'maps', component: MapsComponent },
+ {path:'home',component:HomeComponent},
   { path: 'statis', component: StatisComponent },
 
   { path: '', component: LoginComponent }

@@ -25,6 +25,15 @@ namespace BL
                 return db.Cars.FirstOrDefault(p => p.carNum == car.carNum).carId;
             }
         }
+        public static CarDTO getCar(int carId)
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                var c = db.Cars.FirstOrDefault(cr => cr.carId == carId);
+                return Casting.CarCasting.castToDTO(c);
+            }
+        }
+
         public static void deleteCar(int carId)
         {
             using(carLeasingEntities db=new carLeasingEntities())
@@ -35,15 +44,15 @@ namespace BL
             }
         }
 
-        //public static List<CarDTO> allCars()
-        //{
-        //    using (carLeasingEntities db = new carLeasingEntities())
-        //    {
-        //        return Casting.CarCasting.castListToDTO(db.Cars.ToList());
-        //        }
-        //}
+        public static List<CarDTO> AllCars()
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                return Casting.CarCasting.castListToDTO(db.Cars.ToList());
+            }
+        }
 
-       
+
 
         public static List<CarDTO> carList(int id)
         {
@@ -70,6 +79,14 @@ namespace BL
                 c.picture = car.picture;
                 db.SaveChanges();
             }
+        }
+
+        public static CarDTO GetCar(int id)
+        {
+           using (carLeasingEntities db = new carLeasingEntities())
+           {
+               return Casting.CarCasting.castToDTO(db.Cars.FirstOrDefault(s => s.carId == id));
+           }
         }
     }
 }

@@ -2,7 +2,7 @@
     
     <mat-card class="example-card" *ngFor="let demand of demandList">
         <mat-card-header  >
-          <div mat-card-avatar class="example-header-image" [style.background]="'url(' + image + ')'">
+          <div mat-card-avatar class="example-header-image" [style.background]="'url(' + demand.Picture + ')'">
           </div>
           <mat-card-title>{{demand.fromDate| date:"dd/MM/yyyy"}}</mat-card-title>
           <mat-card-subtitle>{{demand.fromDate| date:"dd/MM/yyyy"}}</mat-card-subtitle>
@@ -30,27 +30,27 @@
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef>  </th>
                     <td mat-cell *matCellDef="let element">
-                     <mat-icon (click)="demandDetails(this.element)">edit</mat-icon>   </td>
+                     <mat-icon (click)="demandDetails(element.demandId)">edit</mat-icon>   </td>
                   </ng-container>
         <ng-container matColumnDef="toHour">
-          <th mat-header-cell *matHeaderCellDef> òã ùòä </th>
+          <th mat-header-cell *matHeaderCellDef> ï¿½ï¿½ ï¿½ï¿½ï¿½ </th>
           <td mat-cell *matCellDef="let element"> {{element.toHour}} <!-- <i class="material-icons">edit</i>
             <i class="material-icons">delete_forever</i> --></td>
         </ng-container>
         <ng-container matColumnDef="fromHour">
-          <th mat-header-cell *matHeaderCellDef> îùòä </th>
+          <th mat-header-cell *matHeaderCellDef> ï¿½ï¿½ï¿½ï¿½ </th>
           <td mat-cell *matCellDef="let element"> {{element.fromHour}} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="toDate">
-          <th mat-header-cell *matHeaderCellDef> òã úàøéê </th>
+          <th mat-header-cell *matHeaderCellDef> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ </th>
           <td mat-cell *matCellDef="let element"> {{element.toDate| date:"dd/MM/yyyy"}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="fromDate">
-          <th mat-header-cell *matHeaderCellDef>  îúàøéê </th>
+          <th mat-header-cell *matHeaderCellDef>  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ </th>
           <td mat-cell *matCellDef="let element"> {{element.fromDate| date:"dd/MM/yyyy"}} </td>
         </ng-container>
 

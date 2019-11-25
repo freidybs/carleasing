@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { SupplyService } from '../supply.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Suplly } from 'src/app/model/supply';
 import { Car } from 'src/app/model/car';
 import { CarService } from 'src/app/car/car.service';
@@ -23,13 +23,22 @@ public latitude: number;
 public longitude: number;
 public selectedAddress: PlaceResult;
 selectedMarker;
-  constructor(private supplyService:SupplyService,private router:Router,private carService:CarService) { }
+id;
+
+  constructor(private supplyService:SupplyService,private router:Router,private carService:CarService, private route: ActivatedRoute) { }
   
   ngOnInit() {
     this.zoom = 10;
     this.latitude = 52.520008;
     this.longitude = 13.404954;
     this.setCurrentPosition();
+    this.route.queryParams
+   .subscribe(params => {
+     this.id = params['id'] ;
+     if(this.id)
+     this.getSupply(this.id);
+   });
+
     this.carService.getCarlist().subscribe(
       (res:Array<Car>)=>{
         this.cars=res;
@@ -40,7 +49,11 @@ selectedMarker;
       }
       )
   }
-
+  getSupply(id){
+this.supplyService.getSupply(id).subscribe((res:Suplly)=>{
+  this.supply=res;
+})
+  }
   saveSupply()
   {console.log(this.supply);
     this.supplyService.saveSupply(this.supply).subscribe( (res)=>{
