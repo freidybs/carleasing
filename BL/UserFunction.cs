@@ -20,6 +20,21 @@ namespace BL
             }
 
         }
+
+        public static int getUsers()
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                return db.Users.Count();
+            }
+        }
+        public static int getTrans()
+        {
+            using (carLeasingEntities db = new carLeasingEntities())
+            {
+                return db.Transactions.Count();
+            }
+        }
         public static UserDTO register(UserDTO user)
         {
             using (carLeasingEntities db = new carLeasingEntities())

@@ -35,6 +35,8 @@ import { DemandUListComponent } from './demand/demand-ulist/demand-ulist.compone
 import { SupplyUListComponent } from './supply/supply-ulist/supply-ulist.component'; 
 import { AppPassworddDirective } from './app-passwordd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { StatisComponent } from './statis/statis.component';
 
 
 
@@ -60,7 +62,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SupplySearchComponent,
     DemandUListComponent,
     SupplyUListComponent,
-      AppPassworddDirective
+      AppPassworddDirective,
+      StatisComponent
   
     
 
@@ -71,7 +74,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -87,9 +89,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatIconModule,
    MatMenuModule,
-
+   MatToolbarModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB6XGmiIhsaoXzLTu611HLGNL74ZEWIaSE',
+      apiKey: 'AIzaSyDxG3TDFOXmRB5XpG9Yfh40VCs5Aqr93jo',
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule,

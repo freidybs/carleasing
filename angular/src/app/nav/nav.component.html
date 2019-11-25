@@ -1,10 +1,15 @@
-<button (click)="main()">main</button>
-<span> <button (click)="demand()">demands</button></span>
-<button (click)="supply()">supplies</button>
- 
+<nav id="header">
+    <p>שלום<br>
+      אורח</p>
+<app-user-profile ></app-user-profile>
+<mat-icon [matMenuTriggerFor]="menu" dir="rtl" id="menuM">menu</mat-icon>
+<mat-menu #menu="matMenu">
+<button mat-menu-item (click)="main()"><span>main</span></button>
+ <button mat-menu-item (click)="demand()"><span>demands</span></button>
+<button mat-menu-item (click)="supply()"><span>supplies</span></button>
+<button mat-menu-item (click)="about()"><span>אנחנו</span></button>
+</mat-menu> 
+<img src="src\icons\@@@.png" id="logo" > 
+</nav>
+<footer ></footer>
   
-      
-    
-
-
- 

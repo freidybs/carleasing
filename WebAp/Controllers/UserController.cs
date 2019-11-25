@@ -16,7 +16,18 @@ namespace WebAp.Controllers
     //[EnableCors(origins:"*",headers:"*",methods:"*")]
     [RoutePrefix("api/User")]
     public class UserController : ApiController
-    {
+    {[HttpGet]
+    [Route("users")]
+    public int getUsers()
+        {
+            return UserFunction.getUsers();
+        }
+        [HttpGet]
+        [Route("trans")]
+        public int getTrans()
+        {
+            return UserFunction.getTrans();
+        }
         [HttpGet]
         [Route("getProfile")]
         public UserDTO getProfile()
