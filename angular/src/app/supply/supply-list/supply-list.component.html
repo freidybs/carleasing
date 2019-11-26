@@ -2,10 +2,9 @@
   <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
 <mat-card id="supplyList"class="example-card" *ngFor="let supply of supplyList">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"  [style.background]="'url(' + supply.Picture + ')'"></div>
-   <mat-card-title>מרחק של:    
-    </mat-card-title>
-  </mat-card-header>
+    <div mat-card-avatar class="example-header-image"  [style.background-image]="'url(' + supply.Picture + ')'"></div>
+    <!-- <img [src]="sanitize(supply.Picture)"> -->
+    </mat-card-header>
  
   <mat-card-content >
       <mat-card-subtitle>
@@ -24,6 +23,7 @@
         </mat-card-subtitle>
     
     <img mat-card-image  [src]="sanitize(getCarPicture(supply.carNum))" alt="Photo of a Shiba Inu"> 
+  
     <p><label>תאור:</label>
       {{getCar(supply.carNum).description}}</p>
     {{supply.carNum}}
