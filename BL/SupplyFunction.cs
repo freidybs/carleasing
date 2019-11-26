@@ -56,7 +56,8 @@ namespace BL
                     }
 
                 }
-                return filterList.Where(f => f.isDone == false).ToList();
+                //return filterList.Where(f => f.isDone == false).ToList();
+                return filterList;
                 ;
             }
         }

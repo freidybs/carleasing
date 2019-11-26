@@ -46,4 +46,8 @@ this.router.navigate(['login']);
   }
 }
  */
+about()
+{
+  this.router.navigate(['home']);
+}
 }
