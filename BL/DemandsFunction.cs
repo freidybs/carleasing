@@ -14,6 +14,7 @@ namespace BL
         {using (carLeasingEntities db = new carLeasingEntities())
             {
                 Demand d = Casting.DemandCasting.castToDAL(demand);
+                d.isDone = false;
                 var dd= db.Demands.Add(d);
                 db.SaveChanges();
                 return Casting.DemandCasting.castToDTO(dd);

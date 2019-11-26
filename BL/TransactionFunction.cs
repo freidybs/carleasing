@@ -44,7 +44,8 @@ namespace BL
                             fromDate = supply.fromDate,
                             fromHour = supply.fromHour,
                             toDate = demaned.fromDate,
-                            toHour = demaned.toHour
+                            toHour = demaned.toHour,
+                            isDone = false
                         };
                         db.Supplies.Add(s);
                     }
@@ -60,7 +61,9 @@ namespace BL
                             fromDate = demaned.toDate,
                             fromHour = demaned.toHour,
                             toDate = supply.toDate,
-                            toHour = supply.toHour
+                            toHour = supply.toHour,
+                            isDone = false
+
                         };
                         db.Supplies.Add(s);
                     }
@@ -103,7 +106,7 @@ namespace BL
                 htmlText += "<h1>שלום" + user.firstName + ' ' + user.lastName + "</h1><p>" ;
                 htmlText += "<div> ההצעה שהצעת נתפסה מתאריך"+ supply.fromDate.Value.ToString("dd/mm/yy") + "בשעה "+supply.fromHour+"</div>";
                 htmlText += "<div> עד תאריך" + supply.toDate.Value.ToString("dd/mm/yy") + " בשעה" + supply.toHour + "</div>";
-
+                htmlText += "<input type='button' value='אשר הצעה'>";
                 string fromMail = "carLeasing@gmail.com";
                 try
                 {

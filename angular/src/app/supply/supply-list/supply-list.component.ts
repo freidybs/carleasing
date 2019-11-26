@@ -61,8 +61,10 @@ if(!this.data)
       });
   }
   getCarPicture(carNum){
-    var x=this.car.find(c=>c.carNum==carNum).picture;
-    return x;
+    var x=this.car.find(c=>c.carNum==carNum)ף
+    if(x!=undefined)
+    return x.picture;
+    return null;
 
 
 
