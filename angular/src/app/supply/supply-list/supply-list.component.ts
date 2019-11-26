@@ -61,7 +61,7 @@ if(!this.data)
       });
   }
   getCarPicture(carNum){
-    var x=this.car.find(c=>c.carNum==carNum)ף
+    var x=this.car.find(c=>c.carNum==carNum);
     if(x!=undefined)
     return x.picture;
     return null;
@@ -84,7 +84,6 @@ if(!this.data)
 
 creatTransaction(supplyId){
   this.supplyService.creatTransaction(supplyId, this.saveDemand.demanedId).subscribe(res=>{
-    debugger
   })
 
 }
