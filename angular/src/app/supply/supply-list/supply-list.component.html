@@ -1,4 +1,4 @@
-<div><button *ngIf="!data" (click)="supplyDetails()">add supply</button></div>
+<div><button *ngIf="!data" (click)="supplyDetails()" [hidden]="newS">add supply</button></div>
   <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
 <mat-card id="supplyList"class="example-card" *ngFor="let supply of supplyList">
   <mat-card-header>
@@ -21,13 +21,17 @@
                 <label>עד השעה:</label>
                 {{supply.toHour}}   
         </mat-card-subtitle>
-    
+        <mat-card-subtitle>
+          <label>סוג ביטוח:</label>
+          {{getCar(supply.carNum).insuranceType}}   
+  </mat-card-subtitle>
+
     <img mat-card-image  [src]="sanitize(getCarPicture(supply.carNum))" alt="Photo of a Shiba Inu"> 
     <p><label>תאור:</label>
       {{getCar(supply.carNum).description}}</p>
     {{supply.carNum}}
     <mat-card-actions>
-      <button class="button" (click)="creatTransaction(supply.supplyId)">מתאים לי</button> 
+      <button class="button" (click)="creatTransaction(supply.supplyId)" >מתאים לי</button> 
     </mat-card-actions>
   </mat-card-content>
 

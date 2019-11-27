@@ -5,7 +5,7 @@ import { Suplly } from 'src/app/model/supply';
 import { Demand } from 'src/app/model/demand';
 import { Car } from 'src/app/model/car';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-supply-list',
   templateUrl: './supply-list.component.html',
@@ -18,6 +18,7 @@ export class SupplyListComponent implements OnInit {
   demand = new Demand();
   supply: Suplly = new Suplly();
   car:Car[];
+  newS:boolean;
   constructor(private supplyService: SupplyService, private router: Router, private aRouter: ActivatedRoute,private sanitizer:DomSanitizer) { }
 
   // ngOnChanges(){
@@ -50,6 +51,10 @@ if(!this.data)
         this.car = res;
       }
     )
+    if(localStorage.getItem("userMail")==null)
+    this.newS=true;
+  else
+    this.newS=false;
   }
   supplyDetails() {
     return this.router.navigate(['supply-details']);
@@ -81,9 +86,29 @@ if(!this.data)
 
 
 creatTransaction(supplyId){
+  if(localStorage.getItem("userMail")==null)
+  {
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'עליך להתחבר ',
+      showConfirmButton: false,
+      timer: 1900
+    })  
+    this.router.navigate(['login']);
+  }
+  else{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'לאחר אישורו הוא יקבל את פרטיך ויצור איתך קשר נשלח מייל לבעל הרכב   ',
+      showConfirmButton: false,
+      timer: 1900
+    }) 
   this.supplyService.creatTransaction(supplyId, this.saveDemand.demanedId).subscribe(res=>{
     debugger
   })
+}
 
 }
 

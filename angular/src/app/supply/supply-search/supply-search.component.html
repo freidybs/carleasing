@@ -120,9 +120,33 @@
                                             </div>
                                           </div>
                                         </div>
-  
-                                
-                             
+                                        
+                                        <div class="row">
+                                          <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                              <div class="input-group">
+                                                  <div class="input-group-addon">
+                                                    </div>
+                                                     
+                                                      <input type="file" name="file" class="form-control" value="בחר קובץ" [(ngModel)]="supplySearch.file">
+                                                   
+                                               </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                              <div class="input-group">
+                                                  <div class="input-group-addon">
+                                                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                      <mat-datepicker #picker></mat-datepicker>
+                                                        </div>
+                                                    <input class="form-control"   [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="תוקף הרשיון" [(ngModel)]="supplySearch. expiryDate">
+                                                  </div>
+                                            </div>
+                                          </div>
+                                        </div> 
                                   <div class="wrapper">
                                     <button type="submit" class="btn btn-primary" (click)="searchSupply()">חפש</button>
                                   </div>

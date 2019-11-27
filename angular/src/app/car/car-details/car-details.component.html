@@ -44,24 +44,14 @@
   </div>
   <div class="form-group">
   <mat-label>insuranceType</mat-label>
-    <mat-select  [(ngModel)]="car.insuranceType" >
-      <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
+  <input class="form-control" matInput placeholder="סוג ביטוח" name="insuranceType" [(ngModel)]="car.insuranceType">
+    <!-- <mat-select  [(ngModel)]="car.insuranceType" > -->
+      <!-- <mat-option *ngFor="let i of insuranceTypes" [value]="i.insuranceId">
         {{i.insuranceName}}
-      </mat-option>
-    </mat-select>
+      </mat-option> -->
+    <!-- </mat-select> -->
   </div>
-  <div class="form-group">
-   <!--   
-        <input matInput placeholder="expiryDate" name="expiryDate" [(ngModel)]="car.expiryDate">
-         -->
-        
-        <input class="form-control"  [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="car.expiryDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        
-  </div>
-  <div class="form-group">
-    <input type="file" name="file" class="form-control" value="בחר קובץ" [(ngModel)]="car.file">
-  </div>
+  
+  
   <button type="submit" class="btn btn-primary"(click)="saveCar()">שמור</button>
 

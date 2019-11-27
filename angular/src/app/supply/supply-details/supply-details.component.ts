@@ -8,6 +8,7 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
 import {Location, Appearance} from '@angular-material-extensions/google-maps-autocomplete';
 /* import {} from '@types/googlemaps'; */
 import PlaceResult = google.maps.places.PlaceResult;
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-supply-details',
   templateUrl: './supply-details.component.html',
@@ -55,16 +56,24 @@ this.supplyService.getSupply(id).subscribe((res:Suplly)=>{
 })
   }
   saveSupply()
-  {console.log(this.supply);
-    this.supplyService.saveSupply(this.supply).subscribe( (res)=>{
-      
-      alert("work");
+  {
+    
+    this.supplyService.saveSupply(this.supply).subscribe( 
+      (res)=>{
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'נשמר',
+          showConfirmButton: false,
+          timer: 1900
+        }) 
+      this.router.navigate(['demand-list']);
         },
         (err)=>{
           alert("err");
         }
       );
-       
+     
   }
   /* deleteSupply()
   {

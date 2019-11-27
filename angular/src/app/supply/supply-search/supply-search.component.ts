@@ -9,7 +9,8 @@ import { DemandService } from 'src/app/demand/demand.service';
   styleUrls: ['./supply-search.component.css']
 })
 export class SupplySearchComponent implements OnInit {
-
+  dn:Date;
+    
   @Input() supplySearch: Demand = new Demand();
   @Output() Search: EventEmitter<any> = new EventEmitter<any>();
   constructor(private damandService:DemandService) { }
@@ -31,7 +32,7 @@ export class SupplySearchComponent implements OnInit {
     this.supplySearch.fromDate.getDate();
     this.Search.emit(this.supplySearch);
     
-    
+  
 
   }
   // saveDemand() {

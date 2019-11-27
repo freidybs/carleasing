@@ -4,6 +4,8 @@ import { DemandService } from '../demand/demand.service';
 import { SupplyService } from '../supply/supply.service';
 import { Demand } from '../model/demand';
 import { Suplly } from '../model/supply';
+import { CarService } from '../car/car.service';
+import { Car } from '../model/car';
 
 @Component({
   selector: 'app-statis',
@@ -15,7 +17,8 @@ numU:number;
 numT:number;
 numS:number;
 numD:number;
-  constructor(private statisService:StatisService ,private demandService:DemandService,private supplyService:SupplyService) { }
+numC:number;
+  constructor(private statisService:StatisService ,private demandService:DemandService,private supplyService:SupplyService,private carService:CarService) { }
 
   ngOnInit() {
     this.statisService.usersCount().subscribe(
@@ -42,7 +45,12 @@ numD:number;
         this.numS=res.length;
       }
     )
-
+    this.carService.getallList().subscribe(
+      (res:Array<Car>)=>
+      {
+        this.numC=res.length;
+      }
+    )
   }
 
 }

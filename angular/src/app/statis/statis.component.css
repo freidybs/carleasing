@@ -1,17 +1,48 @@
-
-div{
+#statisti{
     background-color: #F57F20;
-    width: 24%;
+    width: 100%;
     height: 29.2455%;
-    position: absolute; 
-    margin-left: 25.333%; 
+    position: absolute;  
 }
 #user{
-  margin-left: 0%;  
+  margin-left: 0%;
+   width:15%;
+   position: absolute; 
+   text-align: center; 
+   margin-top: 10px;
 }
 #supply{
-margin-left: 50.666%;
+margin-left: 42.5%;
+width:15%;
+position: absolute;  
+text-align: center; 
+margin-top: 10px;
 }
 #demand{
-    margin-left: 75.999%;
+    margin-left: 63.75%;
+    width:15%;
+    position: absolute; 
+    text-align: center;  
+    margin-top: 10px;
+}
+#car{
+  margin-left: 85%;
+  width:15%;
+  position: absolute; 
+  text-align: center;
+  margin-top: 10px;  
+}
+#trans{
+  margin-left: 21.25%;
+  width:15%;
+  position: absolute; 
+  text-align: center;
+  margin-top: 10px;  
+}
+p{
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
 }

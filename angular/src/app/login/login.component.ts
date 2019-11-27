@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../global/global.service';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -25,6 +25,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent implements OnInit {
 user:User=new User();
 debugger;
+locate:string;
 emailFormControl = new FormControl('', [
   Validators.required,
   Validators.email,
@@ -46,15 +47,37 @@ this.loginService.login(this.user).subscribe(
     if (res.status === 200) { 
       localStorage.setItem("userMail",(this.user.email).toString());
       this.globalService.setToken(res.body.access_token);
-    }
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'הנך מחובר',
+        showConfirmButton: false,
+        timer: 1900
+      }) 
+      /* if(location.href=="http://localhost:4200/supply-list/0") 
+        this.locate=location.href;
+*/
+    } 
 if(res==false)
 {
- alert("you have to register ");
+  Swal.fire({
+    position: 'center',
+    icon: 'warning',
+    title:'עליך להרשם',
+    showConfirmButton: false,
+    timer: 1900
+  }) 
 }
 
   },
   (err)=>{
-    alert("err");
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'עליך להרשם',
+      showConfirmButton: false,
+      timer: 1900
+    }) 
   }
 );
   }
@@ -65,7 +88,7 @@ this.router.navigate(['register']);
 }
 
 
-/** Error when invalid control is dirty, touched, or submitted. */
+
 
 
  
