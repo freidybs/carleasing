@@ -18,6 +18,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 Supply d = Casting.SupplyCasting.castToDAL(Supply);
+                d.isDone = false;
                 db.Supplies.Add(d);
                 db.SaveChanges();
 

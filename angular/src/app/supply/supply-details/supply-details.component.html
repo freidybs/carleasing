@@ -106,12 +106,7 @@
                             
                             <!-- <select  [(ngModel)]="supply.carNum"  class="form-control"  > -->
                                 <select required [(ngModel)]="supply.carNum"  class="form-control">
-                                  
-                                    <option value=""
-                                            
-                                    >Example Placeholder</option>
-                                <option *ngFor="let i of cars" [value]="i" >
-
+                                <option *ngFor="let i of cars" [value]="i.carNum" >
                                   {{i.carNum}}
                                 </option>
                                 </select>  

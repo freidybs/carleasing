@@ -130,6 +130,14 @@ searchSupply(details) {
    this.GetList(details)
       });
 }
+// searchSupply(details) {
+//   this.supplyService.GetFilterList(details).subscribe(
+//     (res: Array<Suplly>) => {
+//       this.supplyList = res;
+//     });
+// }
+
+
 GetList(details){
   this.supplyService.GetFilterList(details).subscribe(
     (res: Array<Suplly>) => {
