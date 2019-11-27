@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,7 +26,13 @@ Save(){
 this.registerService.save(this.user).subscribe(
   (res)=>{
     if(res!=null)
-    alert("פרטיך נשמרו בהצלחה");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'נשמר',
+      showConfirmButton: false,
+      timer: 1900
+    }) 
     this.saveImg(res['userId']);
   },
   (err)=>{

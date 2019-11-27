@@ -1,13 +1,33 @@
 <nav id="header">
-    <p>שלום<br>
-      אורח</p>
+  <div id="p">שלום<br>
+      <div *ngIf="prof">אורח</div>
+      <div *ngIf="!prof">{{user.firstName}}</div>
+  </div> 
 <app-user-profile ></app-user-profile>
 <mat-icon [matMenuTriggerFor]="menu" dir="rtl" id="menuM">menu</mat-icon>
 <mat-menu #menu="matMenu">
-<button mat-menu-item (click)="main()"><span>main</span></button>
- <button mat-menu-item (click)="demand()"><span>demands</span></button>
-<button mat-menu-item (click)="supply()"><span>supplies</span></button>
+<button mat-menu-item (click)="main()"><span>דף הבית</span></button>
+<button mat-menu-item (click)="demand()"><span>חפושים</span></button>
+<button mat-menu-item (click)="supply()"><span>הצעות</span></button>
+<button  mat-menu-item  (click)="login()" >
+  <span >התחברות</span>
+</button>
 <button mat-menu-item (click)="about()"><span>אנחנו</span></button>
+<button  dir="rtl" mat-menu-item (click)="myProfile()" *ngIf="!prof">
+  <span >הפרופיל שלי</span>
+</button>
+<button  mat-menu-item  (click)="myCars()" *ngIf="!prof" >
+  <span >הרכבים שלי </span>
+</button>
+<button *ngIf="!prof" mat-menu-item  (click)="mySupplies()" >
+  <span >ההצעות שלי</span>
+</button>
+<button *ngIf="!prof" mat-menu-item (click)="mydemands()" >
+    <span>הבקשות שלי</span>
+  </button>
+  <button *ngIf="!prof" mat-menu-item (click)="myTransactions()" >
+    <span>העסקאות שלי</span>
+  </button>
 </mat-menu> 
 <img src="src\icons\@@@.png" id="logo" > 
 </nav>

@@ -54,6 +54,7 @@ delete(id:number)
 }
 supplyDetails(id)
 {
+  
  return this.router.navigate(['supply-details'], { queryParams: { id: id }});
  
 }

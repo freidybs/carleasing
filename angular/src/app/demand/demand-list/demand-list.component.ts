@@ -14,7 +14,7 @@ export class DemandListComponent implements OnInit {
 public demandList:Array<Demand>;
 demand:Demand=new Demand();
 supplyList:Array<Suplly>;
- 
+newD:boolean;
  
 
   constructor(private demandService:DemandService, private router:Router) { }
@@ -25,6 +25,10 @@ supplyList:Array<Suplly>;
     this.demandList=res;
   }
  );
+  if(localStorage.getItem("userMail")==null)
+    this.newD=true;
+  else
+    this.newD=false;
 }
 
   demandDetails(id)

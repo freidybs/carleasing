@@ -10,7 +10,7 @@ export class Car {
         trunc:boolean;
         description:string;
         picture:string;
-        insuranceType;
+        insuranceName:string;
         expiryDate:Date;
         /*  file: */
         owner:number;

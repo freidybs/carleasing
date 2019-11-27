@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    if(location.href == "http://localhost:4200/main")
+    if(location.href == "http://localhost:4200/")
       this.mainC=false;
     else
     this.mainC=true;

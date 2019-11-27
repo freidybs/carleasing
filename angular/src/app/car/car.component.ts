@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {CarService}from './car.service';
 import {Car} from '../model/car';
 /* import { google } from '@agm/core/services/google-maps-types'; */
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -21,18 +21,24 @@ export class CarComponent implements OnInit {
 
   ngOnInit() {
     
-    this.CarService.getInsurance().subscribe((res)=>{
-      this.insuranceTypes=res;
-      this.car.insuranceType=res[0].insuranceId;
+    /* this.CarService.getInsurance().subscribe((res)=>{ */
+      /* this.insuranceTypes=res; */
+      /* this.car.insuranceType=res[0].insuranceId; */
       console.log(this.car);
-    })
+    /* }) */
     
   }
   saveCar()
   {
     this.CarService.saveCar(this.car).subscribe(
       (res:number)=>{
-        alert("ok");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'נשמר',
+          showConfirmButton: false,
+          timer: 1900
+        }) 
       
         this.saveImg(res)
        

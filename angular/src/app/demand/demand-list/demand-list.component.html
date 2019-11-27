@@ -1,4 +1,4 @@
-<div  id="plus"  (click)="demandDetails()">
+<div  id="plus"  (click)="demandDetails()"  *ngIf="!newD>
   <i style="font-size: 3em" class="pi pi-plus-circle" matTooltip="חיפוש חדש"></i>
 </div>
     <mat-card class="example-card" *ngFor="let demand of demandList">

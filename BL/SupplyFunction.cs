@@ -46,7 +46,7 @@ namespace BL
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 List<SupplyDTO> filterList = new List<SupplyDTO>();
-                //לולאה על כל החניונים חישוב לפי נקודות שלהם
+                //לולאה על כל הרכבים חישוב לפי נקודות שלהם
                 foreach (var supply in db.Supplies)
                 {
                     var locA = new GeoCoordinate((double)demand.Locationx, (double)demand.Locationy);
@@ -61,10 +61,50 @@ namespace BL
                     }
 
                 }
-                return filterList.Where(f => f.isDone == false).ToList();
-              
-                
-            }
+                //if (demand.price)
+                //{
+                //    filterList = filterList.Where(p => p.price >= demand.price);//.ToList();
+                //}
+                //if (demand.carCompany && demand.numSeats)
+                //{
+                //    foreach (var fl in filterList)
+                //    {
+                //        var cc = db.Cars.FirstOrDefault(p => p.carNum == fl.carNum);
+                //        if (cc.carCompany != demand.carCompany || cc.numSeats != demand.numSeats)
+                //        {
+                //            filterList.Remove(fl);
+                //        }
+
+                //    }
+                //}
+                //else if (demand.carCompany)
+                //{
+                //    foreach (var fl in filterList)
+                //    {
+                //        var cc = db.Cars.FirstOrDefault(p => p.carNum == fl.carNum);
+                //        if (cc.carCompany != demand.carCompany)
+                //        {
+                //            filterList.Remove(fl);
+                //        }
+
+                //    }
+                //}
+                //else
+                //{
+                //    foreach (var fl in filterList)
+                //    {
+                //        var cc = db.Cars.FirstOrDefault(p => p.carNum == fl.carNum);
+                //        if (cc.numSeats != demand.numSeats)
+                //            filterList.Remove(fl);
+                //    }
+
+                //}
+                    return filterList.Where(f => f.isDone == false).ToList();
+                //    if(demand.toDate-demand.fromDate==0)
+                //{
+                //    demand.toHour - demand.fromHour;
+                //}
+                }
         }
 
 

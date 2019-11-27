@@ -11,6 +11,7 @@ import PlaceResult = google.maps.places.PlaceResult;
 import { Suplly } from 'src/app/model/supply';
 import { SupplyListComponent } from 'src/app/supply/supply-list/supply-list.component';
 import { SupplyService } from 'src/app/supply/supply.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-demand-details',
   templateUrl: './demand-details.component.html',
@@ -119,6 +120,13 @@ searchSupply(details) {
     this.supplyService.saveDeamnd(details).subscribe(
       (res:Demand) => {
         this.savedemand = res;
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'נשמר',
+          showConfirmButton: false,
+          timer: 1900
+        }) 
    this.GetList(details)
       });
 }

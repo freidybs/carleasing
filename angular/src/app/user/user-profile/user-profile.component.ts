@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-myCars()
+/* myCars()
 {
   return this.router.navigate(['car-list']);
 }
@@ -34,5 +34,5 @@ mySupplies()
 myTransactions()
 {
   return this.router.navigate(['transaction-ulist']);
-}
+} */
 }

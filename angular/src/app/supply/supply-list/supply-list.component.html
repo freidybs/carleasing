@@ -1,43 +1,52 @@
-<!-- <div><button *ngIf="!data" (click)="supplyDetails()">add supply</button></div> -->
+<!-- <div><button *ngIf="!data"  [hidden]="newS"(click)="supplyDetails()">add supply</button></div> -->
 
-<div  id="plus"  (click)="supplyDetails()">
-  <i style="font-size: 3em" class="pi pi-plus-circle" matTooltip="הצעה חדשה"></i>
+<div id="plus" *ngIf="!data" (click)="supplyDetails()">
+    <i style="font-size: 3em" class="pi pi-plus-circle" matTooltip="הצעה חדשה"></i>
 </div>
-  <!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
-<mat-card id="supplyList"class="example-card" *ngFor="let supply of supplyList">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"  [style.background-image]="'url(' + supply.Picture + ')'"></div>
-    <!-- <img [src]="sanitize(supply.Picture)"> -->
+<!-- <app-supply-search (Search)="searchSupply($event)"></app-supply-search>  -->
+<mat-card id="supplyList" class="example-card" *ngFor="let supply of supplyList">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + supply.Picture + ')'"></div>
+        <!-- <img [src]="sanitize(supply.Picture)"> -->
     </mat-card-header>
- 
-  <mat-card-content >
-      <mat-card-subtitle>
-          <label>מהתאריך:</label>
-          {{supply.fromDate| date:"dd/MM/yyyy"}}
-            </mat-card-subtitle>
-        <mat-card-subtitle><label>עד התאריך:</label>
-          {{supply.toDate| date:"dd/MM/yyyy"}}
-            </mat-card-subtitle>
-            <mat-card-subtitle> <label>מהשעה:</label>
-              {{supply.fromHour}}    
-                 </mat-card-subtitle>
-            <mat-card-subtitle>
-                <label>עד השעה:</label>
-                {{supply.toHour}}   
+
+    <mat-card-content>
+        <mat-card-subtitle>
+            <label>מהתאריך:</label>
+            {{supply.fromDate| date:"dd/MM/yyyy"}}
         </mat-card-subtitle>
         <mat-card-subtitle>
-          <label>מחיר לשעה:</label>
-          {{supply.price}}   
-  </mat-card-subtitle>
-    
-    <img mat-card-image  [src]="sanitize(getCarPicture(supply.carNum))" alt="Photo of a Shiba Inu"> 
-  
-    <p><label>תאור:</label>
-      {{getCar(supply.carNum).description}}</p>
-    {{supply.carNum}}
-    <mat-card-actions>
-      <button class="button" (click)="creatTransaction(supply.supplyId)">מתאים לי</button> 
-    </mat-card-actions>
-  </mat-card-content>
+            <label>עד התאריך:</label>
+            {{supply.toDate| date:"dd/MM/yyyy"}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <label>מהשעה:</label>
+            {{supply.fromHour}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <label>עד השעה:</label>
+            {{supply.toHour}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <label>מחיר לשעה:</label>
+            {{supply.price}}
+        </mat-card-subtitle>
+
+        <mat-card-subtitle>
+            <label>סוג ביטוח:</label>
+            {{getCar(supply.carNum).insuranceType}}
+        </mat-card-subtitle>
+
+        <img mat-card-image [src]="sanitize(getCarPicture(supply.carNum))" alt="Photo of a Shiba Inu">
+
+        <p>
+            <label>תאור:</label>
+            {{getCar(supply.carNum).description}}
+        </p>
+        {{supply.carNum}}
+        <mat-card-actions>
+            <button class="button" (click)="creatTransaction(supply.supplyId)">מתאים לי</button>
+        </mat-card-actions>
+    </mat-card-content>
 
 </mat-card>

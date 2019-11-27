@@ -31,22 +31,22 @@ const routes: Routes = [
 {path:'supply',component:SupplyComponent},
 {path:'demand-list',component:DemandListComponent},
  {path:'demand-details',component:DemandDetailsComponent},
-  {path:'car',component:CarComponent},
-  {path:'car-list',component:CarListComponent},
-  {path:'user-details',component:UserDetailsComponent},
-  {path:'supply-details',component:SupplyDetailsComponent},
-  {path:'supply-list',component:SupplyListComponent},
-  {path:'supply-list/:demand',component:SupplyListComponent},
-  {path:'user-profile',component:UserProfileComponent},
-  {path:'demand-ulist',component:DemandUListComponent},
-  {path:'supply-ulist',component:SupplyUListComponent},
-  {path:'transaction-ulist',component:TransactionUListComponent},
-
-  { path: 'maps', component: MapsComponent },
+{path:'car',component:CarComponent},
+{path:'car-list',component:CarListComponent},
+{path:'user-details',component:UserDetailsComponent},
+{path:'supply-details',component:SupplyDetailsComponent},
+{path:'supply-list',component:SupplyListComponent},
+{path:'supply-list/:demand',component:SupplyListComponent},
+{path:'user-profile',component:UserProfileComponent},
+{path:'demand-ulist',component:DemandUListComponent},
+{path:'supply-ulist',component:SupplyUListComponent},
+{path:'transaction-ulist',component:TransactionUListComponent},
+ /* {path:'login/:number',component:LoginComponent},  */
+{ path: 'maps', component: MapsComponent },
  {path:'home',component:HomeComponent},
   { path: 'statis', component: StatisComponent },
 
-  { path: '', component: LoginComponent }
+  { path: '', component: MainComponent }
 
 ];
  
