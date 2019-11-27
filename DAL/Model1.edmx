@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="carLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="carId" />
@@ -17,7 +17,7 @@
           <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="picture" Type="nvarchar" MaxLength="100" />
           <Property Name="owner" Type="int" Nullable="false" />
-          <Property Name="insuranceType" Type="int" Nullable="false" />
+          <Property Name="insuranceType" Type="nvarchar" MaxLength="50" />
           <Property Name="expiryDate" Type="datetime" Nullable="false" />
           <Property Name="file" Type="nvarchar(max)" />
           <Property Name="carNum" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -37,6 +37,7 @@
           <Property Name="numSeats" Type="int" />
           <Property Name="carCompany" Type="nvarchar" MaxLength="50" />
           <Property Name="isDone" Type="bit" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="Insurance">
           <Key>
@@ -133,18 +134,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Car_Insurance">
-          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Insurance">
-              <PropertyRef Name="insuranceId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="insuranceType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Demand_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
@@ -204,10 +193,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
             <End Role="Supply" EntitySet="Supply" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
-          <AssociationSet Name="FK_Car_Insurance" Association="Self.FK_Car_Insurance">
-            <End Role="Insurance" EntitySet="Insurance" />
-            <End Role="Car" EntitySet="Car" />
-          </AssociationSet>
           <AssociationSet Name="FK_Demand_Users" Association="Self.FK_Demand_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Demand" EntitySet="Demand" />
@@ -221,7 +206,8 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="carLeasingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -237,12 +223,11 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="owner" Type="Int32" Nullable="false" />
-          <Property Name="insuranceType" Type="Int32" Nullable="false" />
+          <Property Name="insuranceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="carNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.fk_1" FromRole="Car" ToRole="Users" />
-          <NavigationProperty Name="Insurance" Relationship="Self.FK_Car_Insurance" FromRole="Car" ToRole="Insurance" />
         </EntityType>
         <EntityType Name="Demand">
           <Key>
@@ -258,9 +243,10 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <Property Name="interestedId" Type="Int32" />
           <Property Name="numSeats" Type="Int32" />
           <Property Name="carCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDone" Type="Boolean" />
+          <Property Name="price" Type="Int32" />
           <NavigationProperty Name="Transactions" Relationship="Self.fk_3" FromRole="Demand" ToRole="Transaction" />
           <NavigationProperty Name="User" Relationship="Self.FK_Demand_Users" FromRole="Demand" ToRole="Users" />
-          <Property Name="isDone" Type="Boolean" />
         </EntityType>
         <EntityType Name="Insurance">
           <Key>
@@ -268,7 +254,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           </Key>
           <Property Name="insuranceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="insuranceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Insurance" FromRole="Insurance" ToRole="Car" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Insurance" FromRole="Insurance" ToRole="Users" />
         </EntityType>
         <EntityType Name="Supply">
@@ -282,12 +267,12 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <Property Name="toDate" Type="DateTime" Precision="3" />
           <Property Name="toHour" Type="Time" Precision="7" />
           <Property Name="carLocationx" Type="Double" />
-          <Property Name="supplyU" Type="Int32" />
           <Property Name="carLocationy" Type="Double" />
-          <NavigationProperty Name="Transactions" Relationship="Self.fk_4" FromRole="Supply" ToRole="Transaction" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Supply_Users" FromRole="Supply" ToRole="Users" />
+          <Property Name="supplyU" Type="Int32" />
           <Property Name="isDone" Type="Boolean" />
           <Property Name="price" Type="Double" />
+          <NavigationProperty Name="Transactions" Relationship="Self.fk_4" FromRole="Supply" ToRole="Transaction" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Supply_Users" FromRole="Supply" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -310,9 +295,9 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <Property Name="beginHour" Type="Time" Precision="7" />
           <Property Name="endDate" Type="DateTime" Precision="3" />
           <Property Name="endHour" Type="Time" Precision="7" />
+          <Property Name="price" Type="Double" />
           <NavigationProperty Name="Demand" Relationship="Self.fk_3" FromRole="Transaction" ToRole="Demand" />
           <NavigationProperty Name="Supply" Relationship="Self.fk_4" FromRole="Transaction" ToRole="Supply" />
-          <Property Name="price" Type="Double" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -340,18 +325,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
             </Principal>
             <Dependent Role="Car">
               <PropertyRef Name="owner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Car_Insurance">
-          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Insurance">
-              <PropertyRef Name="insuranceId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="insuranceType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -427,10 +400,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
             <End Role="Users" EntitySet="Users" />
             <End Role="Car" EntitySet="Cars" />
           </AssociationSet>
-          <AssociationSet Name="FK_Car_Insurance" Association="Self.FK_Car_Insurance">
-            <End Role="Insurance" EntitySet="Insurances" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
           <AssociationSet Name="fk_3" Association="Self.fk_3">
             <End Role="Demand" EntitySet="Demands" />
             <End Role="Transaction" EntitySet="Transactions" />
@@ -479,7 +448,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <EntitySetMapping Name="Demands">
             <EntityTypeMapping TypeName="carLeasingModel.Demand">
               <MappingFragment StoreEntitySet="Demand">
-                <ScalarProperty Name="isDone" ColumnName="isDone" />
                 <ScalarProperty Name="demanedId" ColumnName="demanedId" />
                 <ScalarProperty Name="fromDate" ColumnName="fromDate" />
                 <ScalarProperty Name="fromHour" ColumnName="fromHour" />
@@ -490,6 +458,8 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
                 <ScalarProperty Name="interestedId" ColumnName="interestedId" />
                 <ScalarProperty Name="numSeats" ColumnName="numSeats" />
                 <ScalarProperty Name="carCompany" ColumnName="carCompany" />
+                <ScalarProperty Name="isDone" ColumnName="isDone" />
+                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -504,8 +474,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <EntitySetMapping Name="Supplies">
             <EntityTypeMapping TypeName="carLeasingModel.Supply">
               <MappingFragment StoreEntitySet="Supply">
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="isDone" ColumnName="isDone" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />
                 <ScalarProperty Name="carNum" ColumnName="carNum" />
                 <ScalarProperty Name="fromDate" ColumnName="fromDate" />
@@ -513,8 +481,10 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
                 <ScalarProperty Name="toDate" ColumnName="toDate" />
                 <ScalarProperty Name="toHour" ColumnName="toHour" />
                 <ScalarProperty Name="carLocationx" ColumnName="carLocationx" />
-                <ScalarProperty Name="supplyU" ColumnName="supplyU" />
                 <ScalarProperty Name="carLocationy" ColumnName="carLocationy" />
+                <ScalarProperty Name="supplyU" ColumnName="supplyU" />
+                <ScalarProperty Name="isDone" ColumnName="isDone" />
+                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -532,7 +502,6 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="carLeasingModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
-                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="transactionId" ColumnName="transactionId" />
                 <ScalarProperty Name="demandId" ColumnName="demandId" />
                 <ScalarProperty Name="supplyId" ColumnName="supplyId" />
@@ -540,6 +509,7 @@ warning 6035: The relationship 'FK_Supply_Car' has columns that are not part of 
                 <ScalarProperty Name="beginHour" ColumnName="beginHour" />
                 <ScalarProperty Name="endDate" ColumnName="endDate" />
                 <ScalarProperty Name="endHour" ColumnName="endHour" />
+                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -83,7 +83,9 @@ if(!this.data)
 
 
 creatTransaction(supplyId){
-  this.supplyService.creatTransaction(supplyId, this.saveDemand.demanedId).subscribe(res=>{
+  debugger
+ var demanedId=this.saveDemand?this.saveDemand.demanedId:-1;
+  this.supplyService.creatTransaction(supplyId,demanedId ).subscribe(res=>{
   })
 
 }

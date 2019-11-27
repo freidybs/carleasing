@@ -11,4 +11,5 @@ export class Demand {
         Locationy:number;
         numSeats:number;
         carCompany:string;
+        price:number;
     }

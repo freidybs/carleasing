@@ -10,6 +10,6 @@ export class Suplly {
         toHour:Date;
         carLocationx:number;
         carLocationy:number;
-        
+        price:number;
         
     }

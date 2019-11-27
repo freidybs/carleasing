@@ -16,7 +16,7 @@ namespace DTO
         public string description { get; set; }
         public string picture { get; set; }
         public int owner { get; set; }
-        public int insuranceType { get; set; }
+        public string insuranceType { get; set; }
         public System.DateTime expiryDate { get; set; }
         public string file { get; set; }
         public string carNum { get; set; }

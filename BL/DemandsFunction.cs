@@ -17,6 +17,8 @@ namespace BL
                 d.isDone = false;
                 var dd= db.Demands.Add(d);
                 db.SaveChanges();
+                dd.interestedId = demand.interestedId;
+                db.SaveChanges();
                 return Casting.DemandCasting.castToDTO(dd);
             }
 
@@ -36,8 +38,10 @@ namespace BL
 
             using (carLeasingEntities db = new carLeasingEntities())
             {
+                List<Demand> list = new List<Demand>();
+                list = db.Demands.Where(p => p.isDone == false).ToList();
 
-                return Casting.DemandCasting.castListToDTO(db.Demands.ToList());
+                return Casting.DemandCasting.castListToDTO(list);
 
 
             }

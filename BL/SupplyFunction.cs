@@ -19,9 +19,11 @@ namespace BL
             {
                 Supply d = Casting.SupplyCasting.castToDAL(Supply);
                 d.isDone = false;
-                db.Supplies.Add(d);
+                d.price = Supply.price;
+                var dd = db.Supplies.Add(d);
                 db.SaveChanges();
-
+                dd.supplyU = Supply.supplyU;
+                db.SaveChanges();
 
             }
         }
@@ -30,7 +32,10 @@ namespace BL
         {
             using (carLeasingEntities db = new carLeasingEntities())
             {
-                return Casting.SupplyCasting.castListToDTO(db.Supplies.ToList());
+                List<Supply> list = new List<Supply>();
+                list = db.Supplies.Where(p => p.isDone == false).ToList();
+
+                return Casting.SupplyCasting.castListToDTO(list);
             }
 
         }
@@ -56,9 +61,9 @@ namespace BL
                     }
 
                 }
-                //return filterList.Where(f => f.isDone == false).ToList();
-                return filterList;
-                ;
+                return filterList.Where(f => f.isDone == false).ToList();
+              
+                
             }
         }
 

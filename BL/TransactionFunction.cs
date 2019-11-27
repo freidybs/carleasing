@@ -15,12 +15,29 @@ namespace BL
 
 
 
-        public static bool CreatTransaction(int supplyId, int demanedId)
+        public static bool CreatTransaction(int supplyId, int demanedId, int userId)
         {
 
             using (carLeasingEntities db = new carLeasingEntities())
             {
                 Supply supply = db.Supplies.FirstOrDefault(s => s.supplyId == supplyId);
+
+                if (demanedId == -1)
+                {
+                    DemandDTO d = new DemandDTO()
+                    {
+                        fromDate = supply.fromDate,
+                        fromHour = supply.fromHour,
+                        Locationx = supply.carLocationx,
+                        Locationy = supply.carLocationy,
+                        toDate = supply.toDate,
+                        toHour = supply.toHour,
+                        interestedId = userId
+                    };
+                     d = DemandsFunction.newDemand(d);
+                    demanedId = d.demanedId;
+                }
+             
                 Demand demaned = db.Demands.FirstOrDefault(d => d.demanedId == demanedId);
                 if (supply != null && demaned != null)
                 {

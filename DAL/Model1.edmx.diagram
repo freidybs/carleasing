@@ -4,16 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ede9dfde62d9415fba4cbca7876c6106" Name="Diagram1">
-        <EntityTypeShape EntityType="carLeasingModel.Car" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="carLeasingModel.Demand" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="carLeasingModel.Insurance" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="carLeasingModel.Supply" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+      <Diagram DiagramId="ea48615f49e24e46bc04939772b49e3f" Name="Diagram1">
+        <EntityTypeShape EntityType="carLeasingModel.Car" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="carLeasingModel.Demand" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="carLeasingModel.Insurance" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="carLeasingModel.Supply" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="carLeasingModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="carLeasingModel.Transaction" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="carLeasingModel.User" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="carLeasingModel.Transaction" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="carLeasingModel.User" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="carLeasingModel.fk_1" ManuallyRouted="false" />
-        <AssociationConnector Association="carLeasingModel.FK_Car_Insurance" ManuallyRouted="false" />
         <AssociationConnector Association="carLeasingModel.fk_3" ManuallyRouted="false" />
         <AssociationConnector Association="carLeasingModel.FK_Demand_Users" ManuallyRouted="false" />
         <AssociationConnector Association="carLeasingModel.FK_Users_Insurance" ManuallyRouted="false" />

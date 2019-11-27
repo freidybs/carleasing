@@ -17,8 +17,8 @@ namespace DTO
         public Nullable<double> Locationy { get; set; }
         public Nullable<int> interestedId { get; set; }
         public string Picture { get; set; }
-
-        public Nullable<bool> isDone { get; set; }
+         public Nullable<bool> isDone { get; set; }
+        public Nullable<int> price { get; set; }
 
     }
 }

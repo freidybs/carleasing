@@ -22,7 +22,9 @@ namespace WebAp.Controllers
         [Route("creatTransaction/{supplyId}/{demanedId}")]
         public bool CreatTransaction([FromUri]int supplyId, [FromUri]int demanedId)
         {
-            return TransactionFunction.CreatTransaction(supplyId, demanedId);
+            var id = Helper.getCurrentUserId(Request.GetRequestContext());
+
+            return TransactionFunction.CreatTransaction(supplyId, demanedId, id);
 
         }
         [HttpGet]

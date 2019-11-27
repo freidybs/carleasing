@@ -63,7 +63,7 @@ agm-map { height: 300px; /* height is required */ }
    text-align: right;
    
  }
- div .text-info {color:rgb(230, 89, 8)!important;}
+ div .text-info {color:#F57F20!important;}
   div input{
    border:yellow !important;
    text-align: right;
@@ -81,8 +81,8 @@ agm-map { height: 300px; /* height is required */ }
 
  .input-group-addon
  {
-   background-color: #ffde6c !important;
-   color: #d17d00 !important;
+   background-color: #F57F20 !important;
+   color:black !important;
  }
 
 .button {
